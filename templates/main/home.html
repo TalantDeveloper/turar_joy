@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title" style="text-align: center;">Toshkent Davlat Stomatologiyasi Instituti talabalarini
+                        Talabalar Turar joyiga online ro'yhatga olish platformasi</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Ismingiz</label>
+                                    <input class="input--style-4" type="text" name="first_name">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Familyangiz</label>
+                                    <input class="input--style-4" type="text" name="last_name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Tug'ilgan sanangiz</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Jinsingiz</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Erkak
+                                            <input type="radio" checked="checked" name="gender" value="erkak">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Ayol
+                                            <input type="radio" name="gender" value="ayol">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Telefon nomer</label>
+                                    <input class="input--style-4" type="text" name="phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label class="label">Fakultetingiz</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="fakultet">
+                                    <option disabled="disabled" selected="selected" name="subject">Fakultetlar</option>
+                                    <option value="stomatologiya-fakulteti">Stomotologiya fakulteti</option>
+                                    <option value="bolalar-stomatologiyasi">Bolalar stomatologiyasi</option>
+                                    <option value="tibbiy-pedagogik-va-tibbiyot">Tibbiy-pedagogik va tibbiyot
+                                        fakulteti
+                                    </option>
+                                    <option value="xalqaro-talim">Xalqaro ta'lim fakulteti</option>
+                                    <option value="menejment-fakulteti">Menejment fakulteti</option>
+                                    <option value="xxorijiy-talabalar-bilan-ishlash">Xorijiy talabalar bilan ishlash
+                                        fakulteti
+                                    </option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label class="label">Kursingiz</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="subject">
+                                    <option disabled="disabled" selected="selected">kurs</option>
+                                    <option>1-kurs</option>
+                                    <option>2-kurs</option>
+                                    <option>3-kurs</option>
+                                    <option>4-kurs</option>
+                                    <option>5-kurs</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="file" name="image">
+                        </div>
+                        <div class="row row-space">
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Jinsingiz</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Erkak
+                                            <input type="checkbox" checked="checked" name="gender" value="erkak">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Ayol
+                                            <input type="checkbox" name="gender" value="ayol">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
