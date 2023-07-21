@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from .models import Faculties, Application
 
 
 def home_view(request):
+    faculties = Faculties.objects.all()
+
     print(request.POST.get('first_name'))
     print(request.POST.get('last_name'))
     print(request.POST.get('birthday'))
@@ -13,5 +16,7 @@ def home_view(request):
 
     print(request.POST.get('subject'))
 
-    return render(request, 'main/home.html')
-    pass
+    content = {
+        'faculties': faculties,
+    }
+    return render(request, 'main/home.html', content)

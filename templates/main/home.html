@@ -10,24 +10,20 @@
                         Talabalar Turar joyiga online ro'yhatga olish platformasi</h2>
                     <form method="POST">
                         {% csrf_token %}
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Ismingiz</label>
-                                    <input class="input--style-4" type="text" name="first_name">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Familyangiz</label>
-                                    <input class="input--style-4" type="text" name="last_name">
-                                </div>
+                        <div>
+                            <div class="input-group">
+                                <label class="label">
+                                    Familya Ism Otangizni ismi
+                                </label>
+                                <input class="input--style-4" type="text" name="full_name">
                             </div>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Tug'ilgan sanangiz</label>
+                                    <label class="label">
+                                        Tug'ilgan sanangiz
+                                    </label>
                                     <div class="input-group-icon">
                                         <input class="input--style-4 js-datepicker" type="text" name="birthday">
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
@@ -38,12 +34,14 @@
                                 <div class="input-group">
                                     <label class="label">Jinsingiz</label>
                                     <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Erkak
-                                            <input type="radio" checked="checked" name="gender" value="erkak">
+                                        <label class="radio-container m-r-45">
+                                            Erkak
+                                            <input type="radio" checked="checked" name="gender" value="Erkak">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <label class="radio-container">Ayol
-                                            <input type="radio" name="gender" value="ayol">
+                                        <label class="radio-container">
+                                            Ayol
+                                            <input type="radio" name="gender" value="Ayol">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -60,7 +58,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Telefon nomer</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <input class="input--style-4" type="text" name="phone_number">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +66,14 @@
                             <label class="label">Fakultetingiz</label>
                             <div class="rs-select2 js-select-simple select--no-search">
                                 <select name="fakultet">
-                                    <option disabled="disabled" selected="selected" name="subject">Fakultetlar</option>
+                                    {% for faculty in faculties %}
+
+                                    {% endfor %}
+
+                                    <option disabled="disabled" selected="selected" name="subject">
+                                        Fakultetlar
+                                    </option>
+
                                     <option value="stomatologiya-fakulteti">Stomotologiya fakulteti</option>
                                     <option value="bolalar-stomatologiyasi">Bolalar stomatologiyasi</option>
                                     <option value="tibbiy-pedagogik-va-tibbiyot">Tibbiy-pedagogik va tibbiyot
