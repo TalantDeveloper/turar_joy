@@ -1,22 +1,8 @@
 from django.db import models
 
-Genders = (
-    ('M', 'Erkak'),
-    ('F', 'Ayol'),
-)
-
-
-Courses = (
-    ('1-kurs', '1-Kurs'),
-    ('2-kurs', '2-Kurs'),
-    ('3-kurs', '3-Kurs'),
-    ('4-kurs', '4-Kurs'),
-    ('5-kurs', '5-Kurs'),
-)
-
 
 class Faculties(models.Model):
-    name = models.CharField(max_length=200, verbose_name='Fakultet ismi')
+    name = models.CharField(max_length=200, verbose_name='Fakultet ismi')  # Translation
     link_name = models.CharField(max_length=200, verbose_name='fakultet link')
 
     def __str__(self):
@@ -25,16 +11,19 @@ class Faculties(models.Model):
 
 class Application(models.Model):
     full_name = models.CharField(max_length=200, verbose_name='F.I.O.')
-
     birthday = models.DateField(verbose_name="Tug'ilgan kun")
-    gender = models.CharField(max_length=10, choices=Genders)
+    gender = models.CharField(max_length=10, verbose_name='Jinsi')
     email = models.EmailField(verbose_name='Email')
     phone_number = models.CharField(max_length=50, verbose_name='Telefon nomer')
 
     faculty = models.ForeignKey(Faculties, verbose_name='Fakultet', on_delete=models.CASCADE)
-    course = models.CharField(max_length=20, verbose_name='Kurs', choices=Courses)
-    student_id = models.CharField(max_length=20, verbose_name='student_id')
+    course = models.CharField(max_length=20, verbose_name='Kurs')
     image = models.ImageField(upload_to="./student_image/", verbose_name='Image')
+
+    # ijtimoiy holati
+    i_va_ii = models.FileField(upload_to='./i_va_ii/', verbose_name='I va II guruh nogiron', null=True, blank=True)
+    temir_daftar = models.FileField(upload_to='./temir_daftar/', verbose_name='Temir daftar', null=True, blank=True)
+    yetim = models.FileField(upload_to='./yetim/', verbose_name='Yetim', null=True, blank=True)
 
     def __str__(self):
         return self.full_name

@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h2 class="title" style="text-align: center;">Toshkent Davlat Stomatologiyasi Instituti talabalarini
                         Talabalar Turar joyiga online ro'yhatga olish platformasi</h2>
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div>
                             <div class="input-group">
@@ -66,64 +66,49 @@
                             <label class="label">Fakultetingiz</label>
                             <div class="rs-select2 js-select-simple select--no-search">
                                 <select name="fakultet">
-                                    {% for faculty in faculties %}
-
-                                    {% endfor %}
-
                                     <option disabled="disabled" selected="selected" name="subject">
                                         Fakultetlar
                                     </option>
-
-                                    <option value="stomatologiya-fakulteti">Stomotologiya fakulteti</option>
-                                    <option value="bolalar-stomatologiyasi">Bolalar stomatologiyasi</option>
-                                    <option value="tibbiy-pedagogik-va-tibbiyot">Tibbiy-pedagogik va tibbiyot
-                                        fakulteti
-                                    </option>
-                                    <option value="xalqaro-talim">Xalqaro ta'lim fakulteti</option>
-                                    <option value="menejment-fakulteti">Menejment fakulteti</option>
-                                    <option value="xxorijiy-talabalar-bilan-ishlash">Xorijiy talabalar bilan ishlash
-                                        fakulteti
-                                    </option>
+                                    {% for faculty in faculties %}
+                                        <option value="{{ faculty.link_name }}">{{ faculty.name }}</option>
+                                    {% endfor %}
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
+
                         <div class="input-group">
                             <label class="label">Kursingiz</label>
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="subject">
+                                <select name="kurs">
                                     <option disabled="disabled" selected="selected">kurs</option>
-                                    <option>1-kurs</option>
-                                    <option>2-kurs</option>
-                                    <option>3-kurs</option>
-                                    <option>4-kurs</option>
-                                    <option>5-kurs</option>
+                                    <option value="1-kurs">1-kurs</option>
+                                    <option value="2-kurs">2-kurs</option>
+                                    <option value="3-kurs">3-kurs</option>
+                                    <option value="4-kurs">4-kurs</option>
+                                    <option value="5-kurs">5-course</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
                         <div class="input-group">
+                            <label for="image">Rasmingizni yuklang</label>
                             <input type="file" name="image">
                         </div>
-                        <div class="row row-space">
+                        <h2 style="">IJTIMOIY HOLATINGIZ BO'YICHA MA'LUMOTLARINGIZ</h2>
 
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Jinsingiz</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Erkak
-                                            <input type="checkbox" checked="checked" name="gender" value="erkak">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">Ayol
-                                            <input type="checkbox" name="gender" value="ayol">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="input-group">
+                            <label for=""><h4>I yoki II guruh nogironligi bo'yicha ma'lumot</h4></label>
+                            <input type="file" name="i_va_ii" placeholder="Rasmingizni yuklang">
                         </div>
-
+                        <div class="input-group">
+                            <label for=""><h4>"Temir daftar"ga tushgan oila farzandi bo'yicha ma'lumot</h4></label>
+                            <input type="file" name="temir_daftar" placeholder="Rasmingizni yuklang">
+                        </div>
+                        <div class="input-group">
+                            <label for=""><h4>Otasi, Onasi yoki chin yetim bo'lganlik bo'yicha ma'lumot</h4></label>
+                            <input type="file" name="yetim" placeholder="Rasmingizni yuklang">
+                        </div>
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
                         </div>
