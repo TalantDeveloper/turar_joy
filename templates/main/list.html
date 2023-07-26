@@ -1,98 +1,260 @@
+{% load static %}
+{% load i18n %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <style>
-        #customers {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/icons/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/icons/css/font-awesome.min.css' %}">
+    <script src="{% static 'scripts/jquery.js' %}"></script>
+    <title>Talabalar turar joyi</title>
 
-        #customers td, #customers th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        #customers tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        #customers tr:hover {
-            background-color: #ddd;
-        }
-
-        #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #04AA6D;
-            color: white;
-        }
-    </style>
 </head>
 <body>
+<div class="container mini-admin">
+    <header id="header">
+        <a href="/" style="color:#FFF;">
+            <nav><img src="{% static 'images/logo-wide.png' %}" alt="alt"/>
+                <p>TTJ Admin</p></nav>
+        </a>
+        <a href="/">
+            <p class="title">
+                <i class="fa fa-envelope"></i>
+                Toshkent Davlat Stomatologiya Institutida tahsil olayotgan talabalarni talabalar turar joyiga online
+                ro'yhatga olish
+            </p>
+        </a>
+        <span>
+            <a href="/admin">
+                <p class="title">
+            <em style="color:tomato" class="fa fa-sign-out">
+            </em>
+            Kirish
+        </p>
+        </a>|
+            <a href="/">
+            <img src="{% static 'images/user.png' %}" alt="/">
+            </a>
+        </span>
+    </header>
+    <div class="main">
+        <div class="content">
+            <div class="left-bar">
+                <ul class="data-sort">
+                    <li class="data-sort-otdel">
+                        <label for="radio02">
+                            <a href="/">
+                                Ro'yhatdan o'tganlar
+                            </a>
+                        </label>
+                    </li>
+                    <br>
+                    <li class="data-sort-sotrudnik">
+                        <label for="radio01">
+                            <a href="/">
+                                TTJga qabul qilinganlar
+                            </a>
+                        </label>
+                    </li>
+                    <br>
+                    <li class="data-sort-today">
+                        <label for="radio1">
+                            <a href="/">
+                                Qabul qilinmaganlar
+                            </a>
+                        </label>
+                    </li>
 
-<h1>A Fancy Table</h1>
+                    {#                    <li>#}
+                    {#                        <label for="radio3">#}
+                    {#                            <a class="clgreen" href="/">#}
+                    {#                                Выполненные#}
+                    {#                            </a>#}
+                    {#                        </label>#}
+                    {#                    </li>#}
+                    {#                    <li class="clyellow">#}
+                    {#                        <label for="radio5">#}
+                    {#                            Срок истекает#}
+                    {#                        </label>#}
+                    {#                    </li>#}
+                    {#                    <li class="clred">#}
+                    {#                        <label for="radio4">#}
+                    {#                            <a class="clred" href="/">#}
+                    {#                                Просроченные#}
+                    {#                            </a>#}
+                    {#                        </label>#}
+                    {#                    </li>#}
+                </ul>
+                <h3>Statistika:</h3>
+                <ul class="main-stat">
+                    <li>
+                        <i class="fa fa-file-word-o"></i>
+                        <p>Hamma</p>
+                        <p>954</p>
+                    </li>
+                    <li><i class="fa fa-file-word-o"></i>
+                        <p>Qabul qilinganlar</p>
+                        <p>400</p>
+                    </li>
+                    <li>
+                        <i class="fa fa-file-word-o"></i>
+                        <p>Rad etilganlar</p>
+                        <p>123</p>
+                    </li>
+                    <li>
+                        <i class="fa fa-file-word-o"></i>
+                        <p>Ko'rilmaganlar</p>
+                        <p>405</p>
+                    </li>
 
-<table id="customers">
-    <tr>
-        <th>Company</th>
-        <th>Contact</th>
-        <th>Country</th>
-    </tr>
-    <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-    </tr>
-    <tr>
-        <td>Berglunds snabbköp</td>
-        <td>Christina Berglund</td>
-        <td>Sweden</td>
-    </tr>
-    <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-    </tr>
-    <tr>
-        <td>Ernst Handel</td>
-        <td>Roland Mendel</td>
-        <td>Austria</td>
-    </tr>
-    <tr>
-        <td>Island Trading</td>
-        <td>Helen Bennett</td>
-        <td>UK</td>
-    </tr>
-    <tr>
-        <td>Königlich Essen</td>
-        <td>Philip Cramer</td>
-        <td>Germany</td>
-    </tr>
-    <tr>
-        <td>Laughing Bacchus Winecellars</td>
-        <td>Yoshi Tannamuri</td>
-        <td>Canada</td>
-    </tr>
-    <tr>
-        <td>Magazzini Alimentari Riuniti</td>
-        <td>Giovanni Rovelli</td>
-        <td>Italy</td>
-    </tr>
-    <tr>
-        <td>North/South</td>
-        <td>Simon Crowther</td>
-        <td>UK</td>
-    </tr>
-    <tr>
-        <td>Paris spécialités</td>
-        <td>Marie Bertrand</td>
-        <td>France</td>
-    </tr>
-</table>
+                    <br>
+                    <hr style="border:none;border-bottom: 1px dashed #ccc;">
+                    <br>
 
+                    <li class="">
+                        <a href="/">
+                            <p class="clprint">Pechat qilish
+                                <i class="fa fa-print"></i>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="main-bar">
+                <div class="welcome">
+                    <a class="" href="/">
+                        <p class="add-order-btn">
+                            Qo'shish
+                        </p>
+                    </a>
+                    <div class="table">
+                        <table id="customers" class="main-table">
+                            <tr>
+                                <th>id</th>
+                                <th>F.I.O.</th>
+                                <th>Tug'ilgan sana</th>
+                                <th>Jinsi</th>
+                                <th>Telefon nomer</th>
+                                <th>Email</th>
+                                <th>Fakultet</th>
+                                <th>Kurs</th>
+                                <th>I va II guruh nogiron</th>
+                                <th>Temir daftar</th>
+                                <th>Yetim</th>
+
+                                <th><i class="fa fa-spin fa-gear"></i></th>
+                            </tr>
+                            {% for application in applications %}
+                            <tr class="">
+
+                                    <td class="td-id">
+                                        <a href="/">
+                                            {{ application.id }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="">
+                                            {{ application.full_name }}
+                                        </a>
+                                    </td>
+                                    <td class="td-doc_date">
+                                        {{ application.birthday }}
+                                    </td>
+                                    <td class="td-doc_date">
+                                        {{ application.gender }}
+                                    </td>
+                                    <td class="td-doc_date">
+                                        {{ application.phone_number }}
+                                    </td>
+                                    <td class="td-doc_date">
+                                        {{ application.email }}
+                                    </td>
+                                    <td class="td-doc_date">
+                                        {{ application.faculty }}
+                                    </td>
+                                    <td class="td-tipconcart">
+                                        {{ application.course }}
+                                    </td>
+                                    {% if application.i_va_ii %}
+                                        <td class="td-tip_doc">
+                                            <a href="{{ application.i_va_ii.url }}" target="_blank">
+                                                {{ application.i_va_ii }}
+                                            </a>
+                                        </td>
+                                    {% else %}
+                                        <td class="td-tip_doc">
+                                            <a href="#" target="_blank">
+                                                Nonne
+                                            </a>
+                                        </td>
+                                    {% endif %}
+                                    {% if application.temir_daftar %}
+                                        <td class="td-tip_doc">
+                                            <a href="{{ application.temir_daftar.url }}" target="_blank">
+                                                {{ application.temir_daftar }}
+                                            </a>
+                                        </td>
+                                    {% else %}
+                                        <td class="td-tip_doc">
+                                            <a href="#" target="_blank">
+                                                Nonne
+                                            </a>
+                                        </td>
+                                    {% endif %}
+                                    {% if application.yetim %}
+                                        <td class="td-tip_doc">
+                                            <a href="{{ application.yetim.url }}" target="_blank">
+                                                {{ application.yetim }}
+                                            </a>
+                                        </td>
+                                    {% else %}
+                                        <td class="td-tip_doc">
+                                            <a href="#" target="_blank">
+                                                Nonne
+                                            </a>
+                                        </td>
+                                    {% endif %}
+
+
+                                    <td class="">
+                                        <a href="/">
+                                            <i class="order-editor fa fa-edit"></i>
+                                        </a>
+                                        <i class="order-remover fa fa-trash"></i>
+                                    </td>
+                                    <br>
+
+                            </tr>
+                        {% endfor %}
+                        </table>
+
+                        <form class="delete-order" method="post" action="/"
+                              enctype="multipart/form-data">
+                            @csrf
+                            <input name="id" id="delete_id" type="text" readonly><br><br>
+                            <nav>
+                                <button type="submit">Удалить</button>
+
+                                <a href=""><p>Закрыть</p></a>
+                            </nav>
+
+                        </form>
+                    </div>
+
+                </div>
+
+                <br>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
 </body>
+
+<script type="text/JavaScript" src="{% static 'scripts/main.js' %}"></script>
 </html>
-
-

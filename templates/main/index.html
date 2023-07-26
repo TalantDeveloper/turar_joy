@@ -12,9 +12,19 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<h1 class="p-100" style="padding-bottom: 80px;"></h1>
+<h1 class="p-100" style="padding-bottom: 80px;">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ message.tags }}</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+
+    {% endif %}
+</h1>
 <div class="container-sm p-t-100" style="padding-bottom: 80px; width: 70%">
-    <form action="" method="post" class="form-control">
+    <form action="" method="post" class="form-control" enctype="multipart/form-data">
         {% csrf_token %}
         <h2 class="p-2" style="text-align: justify;">
             Toshkent davlat stomatologiya institutida tahsil oluvchi talabalar 2023-2024-o'quv yili uchun institut
@@ -30,19 +40,19 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="birthday" class="form-label">Tug'ilgan sanangiz</label>
-                <input type="date" class="form-control" id="birthday" required>
+                <input type="date" name="birthday" class="form-control" id="birthday" required>
             </div>
             <div class="col-md-6">
                 <label for="gender" class="form-label">Jinsingiz:</label>
                 <br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
-                           value="option1" required>
+                           value="Erkak" required>
                     <label class="form-check-label" for="inlineRadio1">Erkak</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
-                           value="option2" required>
+                           value="Ayol" required>
                     <label class="form-check-label" for="inlineRadio2">Ayol</label>
                 </div>
             </div>
@@ -100,7 +110,9 @@
         <div class="mb-3">
             <label for="temir" class="form-label">'Temir daftar' va 'Ayollar daftari'da turadigan oila farzandi</label>
             <input type="file" name="temir" class="form-control" id="temir" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">'Temir daftar' yoki 'Ayollar daftar'ida turadigan oila farzandi bo'yicha ma'lumotnoma</div>
+            <div id="emailHelp" class="form-text">'Temir daftar' yoki 'Ayollar daftar'ida turadigan oila farzandi
+                bo'yicha ma'lumotnoma
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
