@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container-sm p-t-100" style="padding-bottom: 80px; width: 80%">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-3">
+                    <img src="{{ application.image.url }}" class="img-fluid rounded-start" width="300" alt="...">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h5><b>1. Talabaning F.I.Sh.: </b> {{ application.full_name }}</h5>
+                        <h5><b>2. Tug'ilgan sanasi: </b> {{ application.birthday }}</h5>
+                        <h5><b>3. Jinsi: </b> {{ application.gender }}</h5>
+                        <h5><b>4. Email: </b> {{ application.email }}</h5>
+                        <h5><b>5. Telefon nomer: </b> {{ application.phone_number }}</h5>
+                        <h5><b>6. Fakultet: </b> {{ application.faculty }}</h5>
+                        <h5><b>7. Kurs: </b> {{ application.course }}</h5>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-0 text-center p-b-100" style="padding-bottom: 100px;">
+            <div class="col-md-3 center">
+                <button type="button" class="btn btn-success">
+                    <a href="">Ariza</a>
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-danger">
+                    <a href="">Nogironligi</a>
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-warning">Chin yetim</button>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-dark">Temir va ayollar daftari</button>
+            </div>
+        </div>
+        <form action="" method="post" class="form-control" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <h2 class="p-2" style="text-align: justify;">
+                rhtgf hfghdf
+            </h2>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <h3></h3>
+    </div>
+{% endblock %}

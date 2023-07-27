@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.welcome_view, name='home'),
 
 
-    path('home/', views.home_view, name='home')
+    path('home/', views.home_view, name='home'),
+    path('update/<int:pk>/', views.update_view, name='update'),
 ]

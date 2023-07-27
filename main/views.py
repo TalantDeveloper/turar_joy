@@ -36,3 +36,12 @@ def home_view(request):
         'applications': applications,
     }
     return render(request, 'main/list.html', content)
+
+
+def update_view(request, pk):
+    application = Application.objects.get(pk=pk)
+    content = {
+        'application': application
+    }
+    return render(request, 'main/update.html', content)
+

@@ -14,98 +14,8 @@
 <body>
 <h1 class="p-100" style="padding-bottom: 80px;"></h1>
 <div class="container-sm p-t-100" style="padding-bottom: 80px;">
-    <form action="" method="post" class="form-control center"
-          style="width: 70%;">
-        {% csrf_token %}
-        <h2 class="p-2">
-            Toshkent davlat stomatologiya institutida tahsil oluvchi talabalar 2023-2024-o'quv yili uchun institut
-            talabalar turar joylarida yashash uchun ariza topshirish uchun kerakli ma'lumotlarni kiriting.
-        </h2>
-        <div class="mb-3 mr-20">
-            <label for="full_name" class="form-label">F.I.O.</label>
-            <input type="text" name="full_name" class="form-control" id="full_name" placeholder="F.I.O.">
-        </div>
-        <div class="row mb-3">
-            <div class="col-6">
-                <label for="birthday" class="form-label">Tug'ilgan sanangiz:</label>
-                <input type="date" name="birthday" class="form-control" id="birthday" placeholder="">
-            </div>
-            <div class="col-6">
-                <label class="form-label">Jinsingiz:</label>
-                <br>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="erkak"
-                           value="Erkak">
-                    <label class="form-check-label" for="erkak">Erkak</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="ayol"
-                           value="Ayol">
-                    <label class="form-check-label" for="ayol">Ayol</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-6">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" id="email" placeholder="example@mail.com">
-            </div>
-            <div class="col-6">
-                <label for="number" class="form-label">Telefon nomer</label>
-                <input type="text" name="phone_number" class="form-control" id="number" placeholder="+998-71-123-45-67">
-            </div>
-        </div>
-        <div class="input-group mb-3">
-            <label class="input-group-text" for="fakultet">Fakultetingiz: </label>
-            <select class="form-select" id="fakultet" name="kurs">
-                <option selected>Tanlash...</option>
-                {% for faculty in faculties %}
-                    <option value="{{ faculty.link_name }}">{{ faculty.name }}</option>
-                {% endfor %}
-            </select>
 
-        </div>
-        <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Kursingiz: </label>
-            <select class="form-select" id="inputGroupSelect01" name="kurs">
-                <option selected>Choose...</option>
-                <option value="1-kurs">1-kurs</option>
-                <option value="2-kurs">2-kurs</option>
-                <option value="3-kurs">3-kurs</option>
-                <option value="4-kurs">4-kurs</option>
-                <option value="5-kurs">5-kurs</option>
-            </select>
 
-        </div>
-        <div class="input-group mb-3">
-            <label class="input-group-text" for="image">Rasm</label>
-            <input type="file" name="image" class="form-control" id="image">
-        </div>
-        <hr>
-        <h3>
-            Ijtimoiy imtiyozlarga ega bo'lsangiz quyidagi kategoriyalar bo'yicha malumotlaringizni yuklang. Unutmang
-            sizni ijtimoiy imkoniyatingizga qarab talabalar turar joyiga qabul qilinasiz.
-        </h3>
-        <div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupFile01">Chin yetim:</label>
-                <input type="file" name="image" class="form-control" id="inputGroupFile01">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupFile01">I va II-guruh nogironligi bor:</label>
-                <input type="file" name="image" class="form-control" id="inputGroupFile01">
-            </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupFile01">Temir daftar yoki Ayollar datarida turadigan oila
-                    farzandi:</label>
-                <input type="file" name="image" class="form-control" id="inputGroupFile01">
-            </div>
-        </div>
-        <div class="d-grid gap-2 col-4 mx-auto p-2">
-            <button class="btn btn-primary btn-lg" type="button">Yuborish</button>
-        </div>
-    </form>
-    <h3></h3>
 </div>
 <!-- Optional JavaScript; choose one of the two! -->
 
@@ -122,7 +32,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
-
 </body>
 </html>
 

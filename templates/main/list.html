@@ -68,25 +68,7 @@
                         </label>
                     </li>
 
-                    {#                    <li>#}
-                    {#                        <label for="radio3">#}
-                    {#                            <a class="clgreen" href="/">#}
-                    {#                                Выполненные#}
-                    {#                            </a>#}
-                    {#                        </label>#}
-                    {#                    </li>#}
-                    {#                    <li class="clyellow">#}
-                    {#                        <label for="radio5">#}
-                    {#                            Срок истекает#}
-                    {#                        </label>#}
-                    {#                    </li>#}
-                    {#                    <li class="clred">#}
-                    {#                        <label for="radio4">#}
-                    {#                            <a class="clred" href="/">#}
-                    {#                                Просроченные#}
-                    {#                            </a>#}
-                    {#                        </label>#}
-                    {#                    </li>#}
+
                 </ul>
                 <h3>Statistika:</h3>
                 <ul class="main-stat">
@@ -148,7 +130,7 @@
                                 <th><i class="fa fa-spin fa-gear"></i></th>
                             </tr>
                             {% for application in applications %}
-                            <tr class="">
+                            <tr style="padding: 0;">
 
                                     <td class="td-id">
                                         <a href="/">
@@ -217,16 +199,13 @@
                                             </a>
                                         </td>
                                     {% endif %}
-
-
                                     <td class="">
-                                        <a href="/">
-                                            <i class="order-editor fa fa-edit"></i>
+                                        <a href="{% url 'main:update' application.id %}">
+                                            <i class="order-editor fa fa-edit" style="padding: 10px; font-size: 2em;"></i>
                                         </a>
-                                        <i class="order-remover fa fa-trash"></i>
+{#                                        <i class="order-remover fa fa-trash" style="padding: 10px; font-size: 2em;"></i>#}
                                     </td>
                                     <br>
-
                             </tr>
                         {% endfor %}
                         </table>

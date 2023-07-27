@@ -25,5 +25,8 @@ class Application(models.Model):
     temir_daftar = models.FileField(upload_to='./temir_daftar/', verbose_name='Temir daftar', null=True, blank=True)
     yetim = models.FileField(upload_to='./yetim/', verbose_name='Yetim', null=True, blank=True)
 
+    is_qabul = models.BooleanField(default=False, verbose_name='Qabul qilindi')
+    is_radetildi = models.BooleanField(default=False, verbose_name='Rad etildi')
+
     def __str__(self):
         return self.full_name
