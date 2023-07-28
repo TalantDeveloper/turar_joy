@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    {% if application %}
+        <div class="card-md">
+            <h2>{{ application.full_name }}</h2>
+            <p>
+                Sizning Arizangiz:
+                {% if application.is_qabul %}
+                    <b>Qabul qilindi.
+                    </b>
+                {% elif application.is_radetildi %}
+                    <b>
+                        <mark>{{ application.commit }}</mark>
+                        sababli Rad etildi.
+                    </b>
+                {% else %}
+                    <b>Hali ko'rib chiqilmoqda...</b>
+                {% endif %}
+            </p>
+        </div>
+    {% else %}
+        <div class="container" style="width: 70%;">
+            <form action="" method="post" class="form-control" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="id" class="form-label h2" style="padding: 20px;">Ro'yhatga olingan tartib raqamingizni kiriting:</label>
+                    <input type="number" name="id" class="form-control" id="id" aria-describedby="idhelp"
+                           placeholder="123" style="padding: 10px; margin: 10px;" required>
+                    <div id="idhelp" class="form-text" style="padding: 5px 5px 5px 10px;">Sizning arizangiz holatini bilish uchun tartib raqamni kiriting</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <h3></h3>
+        </div>
+    {% endif %}
+{% endblock %}
+

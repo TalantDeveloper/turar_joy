@@ -18,7 +18,7 @@ class Application(models.Model):
 
     faculty = models.ForeignKey(Faculties, verbose_name='Fakultet', on_delete=models.CASCADE)
     course = models.CharField(max_length=20, verbose_name='Kurs')
-    image = models.ImageField(upload_to="./student_image/", verbose_name='Image')
+    image = models.ImageField(upload_to="./image/", verbose_name='Image')
 
     # ijtimoiy holati
     i_va_ii = models.FileField(upload_to='./i_va_ii/', verbose_name='I va II guruh nogiron', null=True, blank=True)
@@ -27,6 +27,7 @@ class Application(models.Model):
 
     is_qabul = models.BooleanField(default=False, verbose_name='Qabul qilindi')
     is_radetildi = models.BooleanField(default=False, verbose_name='Rad etildi')
+    commit = models.TextField(verbose_name='Komentari', null=True, blank=True)
 
     def __str__(self):
         return self.full_name
