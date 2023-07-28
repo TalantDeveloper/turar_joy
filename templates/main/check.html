@@ -2,40 +2,75 @@
 {% load i18n %}
 
 {% block content %}
-    {% if application %}
-        <div class="card-md">
-            <h2>{{ application.full_name }}</h2>
-            <p>
-                Sizning Arizangiz:
-                {% if application.is_qabul %}
-                    <b>Qabul qilindi.
-                    </b>
-                {% elif application.is_radetildi %}
-                    <b>
-                        <mark>{{ application.commit }}</mark>
-                        sababli Rad etildi.
-                    </b>
-                {% else %}
-                    <b>Hali ko'rib chiqilmoqda...</b>
-                {% endif %}
-            </p>
-        </div>
-    {% else %}
-        <div class="container" style="width: 70%;">
-            <form action="" method="post" class="form-control" enctype="multipart/form-data">
-                {% csrf_token %}
 
-                <div class="mb-3">
-                    <label for="id" class="form-label h2" style="padding: 20px;">Ro'yhatga olingan tartib raqamingizni kiriting:</label>
-                    <input type="number" name="id" class="form-control" id="id" aria-describedby="idhelp"
-                           placeholder="123" style="padding: 10px; margin: 10px;" required>
-                    <div id="idhelp" class="form-text" style="padding: 5px 5px 5px 10px;">Sizning arizangiz holatini bilish uchun tartib raqamni kiriting</div>
+    <div class="container-sm" style="width: 80%;">
+        <form action="" method="post" class="form-control" enctype="multipart/form-data">
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
+                    <a class="nav-link" aria-current="page" href="{% url 'main:welcome' %}">Ariza topshirish</a>
+                </li>
+                <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
+                    <a class="nav-link" href="{% url 'main:check' %}">Arizani tekshirish</a>
+                </li>
+
+            </ul>
+            {% if application %}
+                        {% if application.is_qabul %}
+                <div class="alert alert-success container-sm" role="alert">
+                    <h4 class="alert-heading">
+                        Sizning Arizangiz: Qabul qilindi.
+                    </h4>
+                    <p>
+                        {{ application.commit }}
+                    </p>
+                    <hr>
+                    <p class="mb-0">
+                        Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
+                    </p>
                 </div>
+                        {% elif application.is_radetildi %}
+                <div class="alert alert-danger container-sm" role="alert">
+                    <h4 class="alert-heading">
+                        Sizning Arizangiz: Rad etildi.
+                    </h4>
+                    <p>
+                        {{ application.commit }}
+                    </p>
+                    <hr>
+                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and
+                        tidy.</p>
+                </div>
+            {% else %}
+                <div class="alert alert-warning container-sm" role="alert">
+                    <h4 class="alert-heading">
+                        Sizning arizangiz: Ko'rilgani yo'q.
+                    </h4>
+                    <p>
+                        Tez orada Arizangiz ko'rib chiqiladi, Email manzilingizga habar yuboriladi.
+                    </p>
+                    <hr>
+                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and
+                        tidy.</p>
+                </div>
+                        {% endif %}
 
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-            <h3></h3>
-        </div>
-    {% endif %}
+
+                    {% else %}
+
+                <hr>
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id" class="form-label h2" style="padding: 10px;">Ro'yhatga olingan tartib raqamingizni
+                        kiriting:</label>
+                    <input type="number" name="id" class="form-control" id="id" aria-describedby="idhelp"
+                           placeholder="example: 123.." style="padding: 10px; margin: 10px;" required>
+                    <div id="idhelp" class="form-text" style="padding: 5px 5px 5px 10px;">Sizning arizangiz holatini
+                        bilish uchun tartib raqamni kiriting
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary container">Tekshirish</button>
+                </form>
+                <h3></h3>
+                </div>
+            {% endif %}
 {% endblock %}
-

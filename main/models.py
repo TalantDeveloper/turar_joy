@@ -16,8 +16,8 @@ class Application(models.Model):
     email = models.EmailField(verbose_name='Email')
     phone_number = models.CharField(max_length=50, verbose_name='Telefon nomer')
 
-    faculty = models.ForeignKey(Faculties, verbose_name='Fakultet', on_delete=models.CASCADE)
-    course = models.CharField(max_length=20, verbose_name='Kurs')
+    faculty = models.ForeignKey(Faculties, verbose_name='Fakultet', on_delete=models.CASCADE, null=True, blank=True)
+    course = models.CharField(max_length=20, verbose_name='Kurs', null=True, blank=True)
     image = models.ImageField(upload_to="./image/", verbose_name='Image')
 
     # ijtimoiy holati
@@ -27,7 +27,7 @@ class Application(models.Model):
 
     is_qabul = models.BooleanField(default=False, verbose_name='Qabul qilindi')
     is_radetildi = models.BooleanField(default=False, verbose_name='Rad etildi')
-    commit = models.TextField(verbose_name='Komentari', null=True, blank=True)
+    commit = models.TextField(verbose_name='Sababi', null=True, blank=True)
 
     def __str__(self):
         return self.full_name

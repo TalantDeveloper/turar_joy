@@ -3,16 +3,25 @@
 {% load i18n %}
 
 {% block content %}
-
-    <div class="container">
+    <div class="container-sm" style="width: 80%;">
 
         <form action="" method="post" class="form-control" enctype="multipart/form-data">
+            <ul class="nav nav-pills nav-fill">
+                <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
+                    <a class="nav-link" aria-current="page" href="">Ariza topshirish</a>
+                </li>
+
+                <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
+                    <a class="nav-link" href="{% url 'main:check' %}">Arizani tekshirish</a>
+                </li>
+
+            </ul>
+            <hr>
             {% csrf_token %}
             <h2 class="p-2" style="text-align: justify;">
                 Toshkent davlat stomatologiya institutida tahsil oluvchi talabalar 2023-2024-o'quv yili uchun institut
                 talabalar turar joylarida yashash uchun ariza topshirish uchun kerakli ma'lumotlarni kiriting.
             </h2>
-
             <div class="mb-3">
                 <label for="name" class="form-label">F.I.O.</label>
                 <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp"

@@ -30,11 +30,12 @@ def welcome_view(request):
 
 def check_id(request):
     if request.method == 'POST':
-        id = request.POST.get('id')
-        application = Application.objects.get(id=id)
+        application_id = request.POST.get('id')
+        application = Application.objects.get(id=application_id)
         return render(request, 'main/check.html', {'application': application})
     else:
         return render(request, 'main/check.html')
+
 
 def home_view(request):
     faculties = Faculties.objects.all()
