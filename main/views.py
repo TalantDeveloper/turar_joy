@@ -20,8 +20,9 @@ def welcome_view(request):
                                                  yetim=request.FILES.get('yetim')
                                                  )
         application.save()
-        messages.success(request, f"{request.POST.get('name')}")
-        return redirect('/')
+        return render(request, 'main/success.html', {
+            'aplication': application
+        })
     content = {
         'faculties': faculties,
     }

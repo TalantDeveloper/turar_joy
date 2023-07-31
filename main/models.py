@@ -24,10 +24,14 @@ class Application(models.Model):
     i_va_ii = models.FileField(upload_to='./i_va_ii/', verbose_name='I va II guruh nogiron', null=True, blank=True)
     temir_daftar = models.FileField(upload_to='./temir_daftar/', verbose_name='Temir daftar', null=True, blank=True)
     yetim = models.FileField(upload_to='./yetim/', verbose_name='Yetim', null=True, blank=True)
+    create_at = models.DateTimeField(auto_now_add=True, verbose_name='Ariza vaqti')
 
     is_qabul = models.BooleanField(default=False, verbose_name='Qabul qilindi')
     is_radetildi = models.BooleanField(default=False, verbose_name='Rad etildi')
     commit = models.TextField(verbose_name='Sababi', null=True, blank=True)
+
+    class Meta:
+        ordering = ['-create_at']
 
     def __str__(self):
         return self.full_name

@@ -3,60 +3,71 @@
 
 {% block content %}
 
-    <div class="container-sm" style="width: 80%;">
-        <form action="" method="post" class="form-control" enctype="multipart/form-data">
-            <ul class="nav nav-pills nav-fill">
-                <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
-                    <a class="nav-link" aria-current="page" href="{% url 'main:welcome' %}">Ariza topshirish</a>
-                </li>
-                <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
-                    <a class="nav-link" href="{% url 'main:check' %}">Arizani tekshirish</a>
-                </li>
-
-            </ul>
-            {% if application %}
-                        {% if application.is_qabul %}
-                <div class="alert alert-success container-sm" role="alert">
-                    <h4 class="alert-heading">
-                        Sizning Arizangiz: Qabul qilindi.
-                    </h4>
-                    <p>
-                        {{ application.commit }}
-                    </p>
-                    <hr>
-                    <p class="mb-0">
-                        Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
-                    </p>
-                </div>
-                        {% elif application.is_radetildi %}
-                <div class="alert alert-danger container-sm" role="alert">
-                    <h4 class="alert-heading">
-                        Sizning Arizangiz: Rad etildi.
-                    </h4>
-                    <p>
-                        {{ application.commit }}
-                    </p>
-                    <hr>
-                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and
-                        tidy.</p>
-                </div>
-            {% else %}
-                <div class="alert alert-warning container-sm" role="alert">
-                    <h4 class="alert-heading">
-                        Sizning arizangiz: Ko'rilgani yo'q.
-                    </h4>
-                    <p>
-                        Tez orada Arizangiz ko'rib chiqiladi, Email manzilingizga habar yuboriladi.
-                    </p>
-                    <hr>
-                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and
-                        tidy.</p>
-                </div>
-                        {% endif %}
-
-
-                    {% else %}
-
+    <div class="container-sm" style="width: 80%; margin-top: 20px;">
+        {% if application %}
+            <div class="form-control">
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
+                        <a class="nav-link" aria-current="page" href="{% url 'main:welcome' %}">Ariza topshirish</a>
+                    </li>
+                    <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
+                        <a class="nav-link" href="{% url 'main:check' %}">Arizani tekshirish</a>
+                    </li>
+                </ul>
+                {% if application.is_qabul %}
+                    <div class="alert alert-success container-sm" role="alert">
+                        <h4 class="alert-heading">
+                            Sizning Arizangiz: Qabul qilindi.
+                        </h4>
+                        <p>
+                            {{ application.commit }}
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                            Arizangiz natijasi bo'yicha <a href="tel:+998-91-234-44-90" style="text-decoration: none;">+998-91-234-44-90</a>
+                            nomeri bilan bog'lanishingiz mumkin!
+                        </p>
+                    </div>
+                {% elif application.is_radetildi %}
+                    <div class="alert alert-danger container-sm" role="alert">
+                        <h4 class="alert-heading">
+                            Sizning Arizangiz: Rad etildi.
+                        </h4>
+                        <p>
+                            {{ application.commit }}
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                            Arizangiz natijasi bo'yicha <a href="tel:+998-91-234-44-90" style="text-decoration: none;">+998-91-234-44-90</a>
+                            nomeri bilan bog'lanishingiz mumkin!
+                        </p>
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning container-sm" role="alert">
+                        <h4 class="alert-heading">
+                            Sizning arizangiz: Ko'rilgani yo'q.
+                        </h4>
+                        <p>
+                            Tez orada Arizangiz ko'rib chiqiladi, Email manzilingizga habar yuboriladi.
+                        </p>
+                        <hr>
+                        <p class="mb-0">
+                            Arizangiz natijasi bo'yicha <a href="tel:+998-91-234-44-90" style="text-decoration: none;">+998-91-234-44-90</a>
+                            nomeri bilan bog'lanishingiz mumkin!
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <form action="" method="post" class="form-control" enctype="multipart/form-data">
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
+                        <a class="nav-link" aria-current="page" href="{% url 'main:welcome' %}">Ariza topshirish</a>
+                    </li>
+                    <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
+                        <a class="nav-link" href="{% url 'main:check' %}">Arizani tekshirish</a>
+                    </li>
+                </ul>
                 <hr>
                 {% csrf_token %}
                 <div class="mb-3">
@@ -69,8 +80,8 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary container">Tekshirish</button>
-                </form>
-                <h3></h3>
-                </div>
-            {% endif %}
+            </form>
+        {% endif %}
+        <h3></h3>
+    </div>
 {% endblock %}

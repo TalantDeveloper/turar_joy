@@ -13,7 +13,8 @@ class FacultiesAdmin(TranslationAdmin):
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
     list_display = ('id', 'full_name', 'phone_number', 'faculty', 'course', 'i_va_ii', 'temir_daftar', 'yetim')
-    list_display_link = ('id', 'full_name', 'phone_number', 'faculty', 'course')
+    list_display_links = ('id', 'full_name', 'phone_number')
     search_fields = ('full_name', 'faculty', 'course')
     filter = ('faculty', 'course')
+
 
