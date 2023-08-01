@@ -62,6 +62,14 @@ def home_view(request):
 
 def update_view(request, pk):
     application = Application.objects.get(pk=pk)
+    if request.method == 'POST':
+        qabul = request.POST.get('qabul')
+        if qabul == 'qabul':
+            application.is_qabul = True
+        else:
+            application.is_radetildi = True
+        application.save()
+        return redirect('main:home')
     content = {
         'application': application
     }

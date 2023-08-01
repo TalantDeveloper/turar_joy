@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-primary">
-                    <a href="{{ application.i_va_ii.url }}" style="color: white;" class="nav-link h4">
+                    <a href="{% if application.i_va_ii %}{{ application.i_va_ii.url }} {% endif %}" style="color: white;" class="nav-link h4">
                         Nogironligi
                         <img src="{% static 'images/down2.png' %}" width="60" alt="">
                     </a>
@@ -44,7 +44,7 @@
             </div>
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-warning">
-                    <a href="{{ application.yetim.url }}" style="color: white;" class="nav-link h4">
+                    <a href="{% if application.yetim %}{{ application.yetim.url }}{% endif %}" style="color: white;" class="nav-link h4">
                         Chin yetim
                         <img src="{% static 'images/down3.png' %}" width="60" alt="">
                     </a>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-dark">
-                    <a href="{{ application.temir_daftar.url }}" style="color: white;" class="nav-link h4">
+                    <a href="{% if application.temir_daftar %}{{ application.temir_daftar.url }}{% endif %}" style="color: white;" class="nav-link h4">
                         Temir va ayollar daftari
                         <img src="{% static 'images/down3.png' %}" width="60" alt="">
                     </a>
@@ -64,26 +64,30 @@
             {% csrf_token %}
 
             <h2 class="p-2" style="text-align: justify;">
-                rhtgf hfghdf
+
             </h2>
             <div class="mb-3">
                 <div class="col-md-6">
-                    <label for="gender" class="form-label">Jinsingiz:</label>
+                    <label for="gender" class="form-label">Talabani:</label>
                     <br>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
-                               value="Erkak" required>
-                        <label class="form-check-label" for="inlineRadio1">Erkak</label>
+                        <input class="form-check-input" type="radio" name="qabul" id="inlineRadio1"
+                               value="qabul" required>
+                        <label class="form-check-label" for="inlineRadio1">Qabul qilish</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
-                               value="Ayol" required>
-                        <label class="form-check-label" for="inlineRadio2">Ayol</label>
+                        <input class="form-check-input" type="radio" name="qabul" id="inlineRadio2"
+                               value="radetish" required>
+                        <label class="form-check-label" for="inlineRadio2">Rad etish</label>
                     </div>
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Comment qoldiring</label>
+                <textarea name="comment" id="comment" cols="100" rows="5" class="form-control"></textarea>
+                <div id="emailHelp" class="form-text">Qabul qilgan yoki rad etganingizni sababi yoki tafsilotini kiriting.</div>
+            </div>
+            <button type="submit" class="btn btn-primary">Yuborish</button>
         </form>
         <h3></h3>
     </div>
