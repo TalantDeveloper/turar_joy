@@ -7,7 +7,7 @@
         <div class="form-control">
             <ul class="nav nav-pills nav-fill">
                 <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
-                    <a class="nav-link" aria-current="page" href="">Ariza topshirish</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'main:welcome' %}">Ariza topshirish</a>
                 </li>
 
                 <li class="nav-item btn btn-outline-primary" style="margin: 10px;">
@@ -18,10 +18,10 @@
 
             <div class="alert alert-success container-sm" role="alert">
                 <h4 class="alert-heading">
-                    {{ aplication.full_name }} Arizangiz yuborildi.
+                    {{ name }} Arizangiz yuborildi.
                 </h4>
                 <p>
-                    Sizning Arizangizni tartib raqami <b>{{ aplication.id }}</b> arizangizni holatini shu tartib raqam
+                    Sizning Arizangizni tartib raqami <b>{{ id }}</b> arizangizni holatini shu tartib raqam
                     bilan tekshirishingiz mumkin.
                 </p>
                 <hr>

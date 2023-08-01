@@ -18,15 +18,17 @@
                         <h5><b>5. Telefon nomer: </b> {{ application.phone_number }}</h5>
                         <h5><b>6. Fakultet: </b> {{ application.faculty }}</h5>
                         <h5><b>7. Kurs: </b> {{ application.course }}</h5>
+                        <h5><b>7. Ariza topshirgan vaqti: </b> {{ application.create_at|time:"H:i" }}
+                            | {{ application.create_at|date:"d.m.Y" }}  </h5>
 
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row g-0 text-center p-b-100" style="padding-bottom: 100px;">
+        <div class="row g-0 text-center p-b-100" style="padding-bottom: 20px;">
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-success">
-                    <a href="" style="color: white;" class="nav-link h4">
+                    <a href="#" style="color: white;" class="nav-link h4">
                         Ariza
                         <img src="{% static 'images/document.png' %}" width="60" alt="">
                     </a>
@@ -34,7 +36,7 @@
             </div>
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-primary">
-                    <a href="" style="color: white;" class="nav-link h4">
+                    <a href="{{ application.i_va_ii.url }}" style="color: white;" class="nav-link h4">
                         Nogironligi
                         <img src="{% static 'images/down2.png' %}" width="60" alt="">
                     </a>
@@ -42,7 +44,7 @@
             </div>
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-warning">
-                    <a href="" style="color: white;" class="nav-link h4">
+                    <a href="{{ application.yetim.url }}" style="color: white;" class="nav-link h4">
                         Chin yetim
                         <img src="{% static 'images/down3.png' %}" width="60" alt="">
                     </a>
@@ -51,7 +53,7 @@
             </div>
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-dark">
-                    <a href="" style="color: white;" class="nav-link h4">
+                    <a href="{{ application.temir_daftar.url }}" style="color: white;" class="nav-link h4">
                         Temir va ayollar daftari
                         <img src="{% static 'images/down3.png' %}" width="60" alt="">
                     </a>
@@ -64,6 +66,23 @@
             <h2 class="p-2" style="text-align: justify;">
                 rhtgf hfghdf
             </h2>
+            <div class="mb-3">
+                <div class="col-md-6">
+                    <label for="gender" class="form-label">Jinsingiz:</label>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1"
+                               value="Erkak" required>
+                        <label class="form-check-label" for="inlineRadio1">Erkak</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2"
+                               value="Ayol" required>
+                        <label class="form-check-label" for="inlineRadio2">Ayol</label>
+                    </div>
+                </div>
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <h3></h3>

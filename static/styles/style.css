@@ -208,15 +208,15 @@ body {
 
 #table {
     color: rgb(238, 238, 238, 0.8);
-    line-height: 1.5;
+    line-height: 2;
     font-size: 14px;
     border-collapse: collapse;
     width: 100%;
-    overflow: auto
+    overflow: auto;
 }
 
 #table td, #table th {
-    padding: 15px;
+    padding: 10px;
     border: none;
     text-align: left;
 }

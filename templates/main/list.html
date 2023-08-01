@@ -12,23 +12,13 @@
     <script src="{% static 'scripts/jquery.js' %}"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,0"/>
+
 
     <title>Talabalar turar joyi</title>
 
 </head>
 <body>
-<style>
-    .material-symbols-outlined {
-        font-variation-settings: 'FILL' 1,
-        'wght' 700,
-        'GRAD' 0,
-        'opsz' 48
-    }
-</style>
+
 <div class="container mini-admin">
     <header id="header">
         <a href="/" style="color:#FFF;">
@@ -61,7 +51,7 @@
                 <ul class="data-sort">
                     <li class="data-sort-otdel">
                         <label for="radio02">
-                            <a href="/">
+                            <a href="{% url 'main:home' %}">
                                 Ro'yhatdan o'tganlar
                             </a>
                         </label>
@@ -74,7 +64,7 @@
                             </a>
                         </label>
                     </li>
-                    <br>
+                    <br/>
                     <li class="data-sort-today">
                         <label for="radio1">
                             <a href="/">
@@ -82,29 +72,27 @@
                             </a>
                         </label>
                     </li>
-
-
                 </ul>
                 <h3>Statistika:</h3>
                 <ul class="main-stat">
                     <li>
                         <i class="fa fa-file-word-o"></i>
                         <p>Hamma</p>
-                        <p>954</p>
+                        <p>{{ hammasi }}</p>
                     </li>
                     <li><i class="fa fa-file-word-o"></i>
                         <p>Qabul qilinganlar</p>
-                        <p>400</p>
+                        <p>{{ qabuls }}</p>
                     </li>
                     <li>
                         <i class="fa fa-file-word-o"></i>
                         <p>Rad etilganlar</p>
-                        <p>123</p>
+                        <p>{{ radetilgan }}</p>
                     </li>
                     <li>
                         <i class="fa fa-file-word-o"></i>
                         <p>Ko'rilmaganlar</p>
-                        <p>405</p>
+                        <p>{{ notsees }}</p>
                     </li>
 
                     <br>
@@ -145,8 +133,7 @@
                                 <th><i class="fa fa-spin fa-gear"></i></th>
                             </tr>
                             {% for application in applications %}
-                                <tr style="padding: 0;">
-
+                                <tr style="padding: 0; background: {% cycle '#fff' '#ddd' %}">
                                     <td class="td-id">
                                         <a href="/">
                                             {{ application.id }}
@@ -178,7 +165,7 @@
                                     {% if application.i_va_ii %}
                                         <td class="td-tip_doc">
                                             <a href="{{ application.i_va_ii.url }}" target="_blank">
-                                                <img src="{% static 'images/down1.png' %}" width="60" alt="">
+                                                <img src="{% static 'images/down1.png' %}" width="40" alt="">
                                             </a>
                                         </td>
                                     {% else %}
@@ -191,7 +178,7 @@
                                     {% if application.temir_daftar %}
                                         <td class="td-tip_doc">
                                             <a href="{{ application.temir_daftar.url }}" target="_blank">
-                                                <img src="{% static 'images/down2.png' %}" width="60" alt="">
+                                                <img src="{% static 'images/down2.png' %}" width="40" alt="">
                                             </a>
                                         </td>
                                     {% else %}
@@ -204,7 +191,7 @@
                                     {% if application.yetim %}
                                         <td class="td-tip_doc">
                                             <a href="{{ application.yetim.url }}" target="_blank">
-                                                <img src="{% static 'images/down3.png' %}" width="60" alt="">
+                                                <img src="{% static 'images/down3.png' %}" width="40" alt="">
                                             </a>
                                         </td>
                                     {% else %}
@@ -217,11 +204,10 @@
                                     <td class="">
                                         <a href="{% url 'main:update' application.id %}">
                                             <i class="order-editor fa fa-edit"
-                                               style="padding: 10px; font-size: 2em;"></i>
+                                               style="padding: 10px; font-size: 1.5em;"></i>
                                         </a>
                                         {#                                        <i class="order-remover fa fa-trash" style="padding: 10px; font-size: 2em;"></i>#}
                                     </td>
-                                    <br>
                                 </tr>
                             {% endfor %}
                         </table>

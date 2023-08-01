@@ -20,13 +20,16 @@ def welcome_view(request):
                                                  yetim=request.FILES.get('yetim')
                                                  )
         application.save()
-        return render(request, 'main/success.html', {
-            'aplication': application
-        })
+        request.session['ariza'] = {'name': application.full_name, 'id': application.id}
+        return redirect('main:success')
     content = {
         'faculties': faculties,
     }
     return render(request, 'main/index.html', content)
+
+
+def success_view(request):
+    return render(request, 'main/success.html')
 
 
 def check_id(request):
@@ -41,9 +44,18 @@ def check_id(request):
 def home_view(request):
     faculties = Faculties.objects.all()
     applications = Application.objects.all()
+    hammasi = len(applications)
+    qabuls = len(Application.objects.filter(is_qabul=True))
+    radetilgan = len(Application.objects.filter(is_radetildi=True))
+    notsees = hammasi - qabuls - radetilgan
+
     content = {
         'faculties': faculties,
         'applications': applications,
+        'qabuls': qabuls,
+        'radetilgan': radetilgan,
+         'hammasi': hammasi,
+        'notsees': notsees
     }
     return render(request, 'main/list.html', content)
 
