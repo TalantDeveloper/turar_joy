@@ -12,8 +12,6 @@
     <script src="{% static 'scripts/jquery.js' %}"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-
-
     <title>Talabalar turar joyi</title>
 
 </head>
@@ -110,48 +108,58 @@
             </div>
             <div class="main-bar">
                 <div class="welcome">
-                    <a class="" href="/">
-                        <p class="add-order-btn">
+                    <p>
+                        <a class="add-order-btn" href="/">
+
                             Qo'shish
-                        </p>
-                    </a>
+
+                        </a>
+                    </p>
+
                     <div class="table">
                         <table id="customers" class="main-table">
                             <tr>
                                 <th>id</th>
                                 <th>F.I.O.</th>
                                 <th>Tug'ilgan sana</th>
+                                <th>Ariza vaqti</th>
                                 <th>Jinsi</th>
                                 <th>Telefon nomer</th>
                                 <th>Email</th>
                                 <th>Fakultet</th>
                                 <th>Kurs</th>
-                                <th>I va II guruh nogiron</th>
+                                <th>Nogiron</th>
                                 <th>Temir daftar</th>
                                 <th>Yetim</th>
 
                                 <th><i class="fa fa-spin fa-gear"></i></th>
                             </tr>
                             {% for application in applications %}
-                                <tr style="padding: 0; background: {% cycle '#fff' '#ddd' %}">
+                                <tr style="padding: 0; background: {% if application.is_qabul %} #a4e898; {% elif application.is_radetildi %} #e5939a;{% endif %} border-bottom: 1px solid black;">
                                     <td class="td-id">
-                                        <a href="/">
+                                        <a href="{% url 'main:update' application.id %}">
                                             {{ application.id }}
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="">
+                                        <a href="{% url 'main:update' application.id %}">
                                             {{ application.full_name }}
                                         </a>
                                     </td>
                                     <td class="td-doc_date">
-                                        {{ application.birthday }}
+                                        {{ application.birthday|date:"d.m.Y" }}
+                                    </td>
+                                    <td>
+                                        {{ application.create_at|time:"H:i" }}
+                                        | {{ application.create_at|date:"d.m.Y" }}
                                     </td>
                                     <td class="td-doc_date">
                                         {{ application.gender }}
                                     </td>
                                     <td class="td-doc_date">
-                                        {{ application.phone_number }}
+                                        <a href="te:{{ application.phone_number }}">
+                                            {{ application.phone_number }}
+                                        </a>
                                     </td>
                                     <td class="td-doc_date">
                                         {{ application.email }}
@@ -171,7 +179,7 @@
                                     {% else %}
                                         <td class="td-tip_doc">
                                             <a href="#" target="_blank">
-                                                Nonne
+
                                             </a>
                                         </td>
                                     {% endif %}
@@ -184,7 +192,7 @@
                                     {% else %}
                                         <td class="td-tip_doc">
                                             <a href="#" target="_blank">
-                                                Nonne
+
                                             </a>
                                         </td>
                                     {% endif %}
@@ -197,7 +205,7 @@
                                     {% else %}
                                         <td class="td-tip_doc">
                                             <a href="#" target="_blank">
-                                                Nonne
+
                                             </a>
                                         </td>
                                     {% endif %}
@@ -206,7 +214,6 @@
                                             <i class="order-editor fa fa-edit"
                                                style="padding: 10px; font-size: 1.5em;"></i>
                                         </a>
-                                        {#                                        <i class="order-remover fa fa-trash" style="padding: 10px; font-size: 2em;"></i>#}
                                     </td>
                                 </tr>
                             {% endfor %}

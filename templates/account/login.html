@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-2"></div>
+
+            <div class="col-lg-8">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <label class="p-2"><h4>Username</h4></label>
+                    <input type="text" name="username" class="p-3 form-control" placeholder="Enter Username">
+
+                    <label class="p-2"><h4>Password</h4></label>
+                    <input type="password" name="password" class="p-3 form-control" placeholder="Password">
+                    <br>
+                    <button type="submit" class="p-3 btn btn-primary" style="width: 100%;">Submit</button>
+                    <br>
+
+                    <section style="height: 203px;"></section>
+                </form>
+            </div>
+
+            <div class="col-lg-2"></div>
+        </div>
+
+    </div>
+{% endblock %}

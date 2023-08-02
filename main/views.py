@@ -20,6 +20,7 @@ def welcome_view(request):
                                                  yetim=request.FILES.get('yetim')
                                                  )
         application.save()
+
         request.session['ariza'] = {'name': application.full_name, 'id': application.id}
         return redirect('main:success')
     content = {
