@@ -17,7 +17,7 @@
                 {% if application.is_qabul %}
                     <div class="alert alert-success container-sm" role="alert">
                         <h4 class="alert-heading">
-                            Sizning Arizangiz: Qabul qilindi.
+                            {{ application.full_name }} sizning arizangiz: Qabul qilindi.
                         </h4>
                         <p>
                             {{ application.commit }}
@@ -31,7 +31,7 @@
                 {% elif application.is_radetildi %}
                     <div class="alert alert-danger container-sm" role="alert">
                         <h4 class="alert-heading">
-                            Sizning Arizangiz: Rad etildi.
+                            {{ application.full_name }} sizning arizangiz: Rad etildi.
                         </h4>
                         <p>
                             {{ application.commit }}
@@ -45,7 +45,7 @@
                 {% else %}
                     <div class="alert alert-warning container-sm" role="alert">
                         <h4 class="alert-heading">
-                            Sizning arizangiz: Ko'rilgani yo'q.
+                            {{ application.full_name }} sizning arizangiz: Ko'rilgani yo'q.
                         </h4>
                         <p>
                             Tez orada Arizangiz ko'rib chiqiladi, Email manzilingizga habar yuboriladi.
