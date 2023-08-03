@@ -19,6 +19,9 @@ def welcome_view(request):
                                                  i_va_ii=request.FILES.get('nogiron'),
                                                  temir_daftar=request.FILES.get('temir'),
                                                  yetim=request.FILES.get('yetim'),
+                                                 yoshlar_daftar=request.FILES.get('yoshlar_daftar'),
+                                                 oila_i_va_ii=request.FILES.get('oila_i_va_ii'),
+                                                 boshqa=request.FILES.get('boshqa'),
                                                  status=Status.objects.get(pk=1)
                                                  )
         application.save()
@@ -55,7 +58,6 @@ def home_view(request):
         'qabul': len(Application.objects.filter(status_id=2)),
         'radetildi': len(Application.objects.filter(status_id=3)),
         'korilmaganlar': len(Application.objects.filter(status_id=1)),
-
     }
     return render(request, 'main/list.html', content)
 

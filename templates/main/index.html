@@ -51,7 +51,7 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" required>
+                    <input type="email" name="email" class="form-control" id="email">
                 </div>
                 <div class="col-md-6">
                     <label for="number" class="form-label">Telefon nomer:</label>
@@ -76,6 +76,7 @@
                     <option value="3-kurs">3-kurs</option>
                     <option value="4-kurs">4-kurs</option>
                     <option value="5-kurs">5-kurs</option>
+                    <option value="6-kurs">6-kurs</option>
                 </select>
             </div>
             <div class="input-group mb-3">
@@ -102,17 +103,44 @@
                 <div id="emailHelp" class="form-text">I yoki II guruh nogironligi bo'yicha ma'lumotnome</div>
             </div>
             <div class="mb-3">
-                <label for="temir" class="form-label">'Temir daftar' va 'Ayollar daftari'da turadigan oila
-                    farzandi</label>
+                <label for="temir" class="form-label">
+                    'Temir daftar' va 'Ayollar daftari'da turadigan oila farzandi
+                </label>
                 <input type="file" name="temir" class="form-control" id="temir" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">'Temir daftar' yoki 'Ayollar daftar'ida turadigan oila
-                    farzandi
-                    bo'yicha ma'lumotnoma
+                <div id="emailHelp" class="form-text">
+                    'Temir daftar' yoki 'Ayollar daftar'ida turadigan oila farzandi bo'yicha ma'lumotnoma
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="mb-3">
+                <label for="temir" class="form-label">
+                    'Yoshlar daftar'da turadigan talaba
+                </label>
+                <input type="file" name="yoshlar_daftar" class="form-control" id="temir" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">
+                    'Yoshlar daftar'da turiadigan talaba bo'yicha ma'lumotnoma
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="temir" class="form-label">
+                    Oilasida I va II-guruh nogironligi yoki surunkali kasalligi bo'lgan oila farzandi
+                </label>
+                <input type="file" name="oila_i_va_ii" class="form-control" id="temir" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">
+                    Oilasida I va II-guruh nogironligi yoki surunkali kasalligi borligi bo'yicha ma'lumotnoma
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="temir" class="form-label">
+                    Boshqa imtiyozga ega:
+                </label>
+                <input type="file" name="boshqa" class="form-control" id="temir" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">
+                    Boshqa imtiyozga ega bo'lgan talaba imtiyozi bo'yicha ma'lumotnoma
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Yuborish</button>
         </form>
-        <h3 style="padding: 30px;"> </h3>
+        <h3 style="padding: 30px;"></h3>
     </div>
 
 {% endblock %}

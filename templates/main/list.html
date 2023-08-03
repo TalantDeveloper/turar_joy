@@ -13,12 +13,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <link rel="icon" href="{% static 'images/logotip.png' %}">
-
     <title>Talabalar turar joyi</title>
-
 </head>
 <body>
-
 <div class="container mini-admin">
     <header id="header">
         <a href="/" style="color:#FFF;">
@@ -32,18 +29,6 @@
                 ro'yhatga olish
             </p>
         </a>
-{#        <span>#}
-{#            <a href="/admin">#}
-{#                <p class="title">#}
-{#            <em style="color:tomato" class="fa fa-sign-out">#}
-{#            </em>#}
-{#            Kirish#}
-{#        </p>#}
-{#        </a>|#}
-{#            <a href="/">#}
-{#            <img src="{% static 'images/user.png' %}" alt="/">#}
-{#            </a>#}
-{#        </span>#}
     </header>
     <div class="main">
         <div class="content">
@@ -112,12 +97,9 @@
                 <div class="welcome">
                     <p>
                         <a class="add-order-btn" href="/">
-
                             Qo'shish
-
                         </a>
                     </p>
-
                     <div class="table">
                         <table id="customers" class="main-table">
                             <tr>
@@ -127,13 +109,9 @@
                                 <th>Ariza vaqti</th>
                                 <th>Jinsi</th>
                                 <th>Telefon nomer</th>
-                                <th>Email</th>
                                 <th>Fakultet</th>
                                 <th>Kurs</th>
-                                <th>Nogiron</th>
-                                <th>Temir daftar</th>
-                                <th>Yetim</th>
-
+                                <th>Ariza holati</th>
                                 <th><i class="fa fa-spin fa-gear"></i></th>
                             </tr>
                             {% for application in applications %}
@@ -163,54 +141,55 @@
                                             {{ application.phone_number }}
                                         </a>
                                     </td>
-                                    <td class="td-doc_date">
-                                        {{ application.email }}
-                                    </td>
+
                                     <td class="td-doc_date">
                                         {{ application.faculty }}
                                     </td>
                                     <td class="td-tipconcart">
                                         {{ application.course }}
                                     </td>
-                                    {% if application.i_va_ii %}
-                                        <td class="td-tip_doc">
-                                            <a href="{{ application.i_va_ii.url }}" target="_blank">
-                                                <img src="{% static 'images/down1.png' %}" width="40" alt="">
-                                            </a>
-                                        </td>
-                                    {% else %}
-                                        <td class="td-tip_doc">
-                                            <a href="#" target="_blank">
-
-                                            </a>
-                                        </td>
-                                    {% endif %}
-                                    {% if application.temir_daftar %}
-                                        <td class="td-tip_doc">
-                                            <a href="{{ application.temir_daftar.url }}" target="_blank">
-                                                <img src="{% static 'images/down2.png' %}" width="40" alt="">
-                                            </a>
-                                        </td>
-                                    {% else %}
-                                        <td class="td-tip_doc">
-                                            <a href="#" target="_blank">
-
-                                            </a>
-                                        </td>
-                                    {% endif %}
-                                    {% if application.yetim %}
-                                        <td class="td-tip_doc">
-                                            <a href="{{ application.yetim.url }}" target="_blank">
-                                                <img src="{% static 'images/down3.png' %}" width="40" alt="">
-                                            </a>
-                                        </td>
-                                    {% else %}
-                                        <td class="td-tip_doc">
-                                            <a href="#" target="_blank">
-
-                                            </a>
-                                        </td>
-                                    {% endif %}
+                                    <td class="td-tipconcart">
+                                        {{ application.status }}
+                                    </td>
+{#                                    {% if application.i_va_ii %}#}
+{#                                        <td class="td-tip_doc">#}
+{#                                            <a href="{{ application.i_va_ii.url }}" target="_blank">#}
+{#                                                <img src="{% static 'images/down1.png' %}" width="40" alt="">#}
+{#                                            </a>#}
+{#                                        </td>#}
+{#                                    {% else %}#}
+{#                                        <td class="td-tip_doc">#}
+{#                                            <a href="#" target="_blank">#}
+{##}
+{#                                            </a>#}
+{#                                        </td>#}
+{#                                    {% endif %}#}
+{#                                    {% if application.temir_daftar %}#}
+{#                                        <td class="td-tip_doc">#}
+{#                                            <a href="{{ application.temir_daftar.url }}" target="_blank">#}
+{#                                                <img src="{% static 'images/down2.png' %}" width="40" alt="">#}
+{#                                            </a>#}
+{#                                        </td>#}
+{#                                    {% else %}#}
+{#                                        <td class="td-tip_doc">#}
+{#                                            <a href="#" target="_blank">#}
+{##}
+{#                                            </a>#}
+{#                                        </td>#}
+{#                                    {% endif %}#}
+{#                                    {% if application.yetim %}#}
+{#                                        <td class="td-tip_doc">#}
+{#                                            <a href="{{ application.yetim.url }}" target="_blank">#}
+{#                                                <img src="{% static 'images/down3.png' %}" width="40" alt="">#}
+{#                                            </a>#}
+{#                                        </td>#}
+{#                                    {% else %}#}
+{#                                        <td class="td-tip_doc">#}
+{#                                            <a href="#" target="_blank">#}
+{##}
+{#                                            </a>#}
+{#                                        </td>#}
+{#                                    {% endif %}#}
                                     <td class="">
                                         <a href="{% url 'main:update' application.id %}">
                                             <i class="order-editor fa fa-edit"
@@ -220,25 +199,9 @@
                                 </tr>
                             {% endfor %}
                         </table>
-
-                        <form class="delete-order" method="post" action="/"
-                              enctype="multipart/form-data">
-                            @csrf
-                            <input name="id" id="delete_id" type="text" readonly><br><br>
-                            <nav>
-                                <button type="submit">Удалить</button>
-
-                                <a href=""><p>Закрыть</p></a>
-                            </nav>
-
-                        </form>
                     </div>
-
                 </div>
-
                 <br>
-
-
             </div>
         </div>
     </div>
