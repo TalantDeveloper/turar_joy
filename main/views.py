@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Faculties, Application
+from .models import Faculties, Application, Status
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def welcome_view(request):
@@ -17,10 +18,10 @@ def welcome_view(request):
                                                  image=request.FILES.get('image'),
                                                  i_va_ii=request.FILES.get('nogiron'),
                                                  temir_daftar=request.FILES.get('temir'),
-                                                 yetim=request.FILES.get('yetim')
+                                                 yetim=request.FILES.get('yetim'),
+                                                 status=Status.objects.get(pk=1)
                                                  )
         application.save()
-
         request.session['ariza'] = {'name': application.full_name, 'id': application.id}
         return redirect('main:success')
     content = {
@@ -42,37 +43,60 @@ def check_id(request):
         return render(request, 'main/check.html')
 
 
+@login_required(login_url='account:login')
 def home_view(request):
     faculties = Faculties.objects.all()
     applications = Application.objects.all()
-    hammasi = len(applications)
-    qabuls = len(Application.objects.filter(is_qabul=True))
-    radetilgan = len(Application.objects.filter(is_radetildi=True))
-    notsees = hammasi - qabuls - radetilgan
-
+    status = Status.objects.all()
     content = {
         'faculties': faculties,
         'applications': applications,
-        'qabuls': qabuls,
-        'radetilgan': radetilgan,
-         'hammasi': hammasi,
-        'notsees': notsees
+        'hammasi': len(applications),
+        'qabul': len(Application.objects.filter(status_id=2)),
+        'radetildi': len(Application.objects.filter(status_id=3)),
+        'korilmaganlar': len(Application.objects.filter(status_id=1)),
+
     }
     return render(request, 'main/list.html', content)
 
 
+@login_required(login_url='account:login')
 def update_view(request, pk):
     application = Application.objects.get(pk=pk)
+    status = Status.objects.all()
     if request.method == 'POST':
-        qabul = request.POST.get('qabul')
-        if qabul == 'qabul':
-            application.is_qabul = True
-        else:
-            application.is_radetildi = True
+        statu = Status.objects.get(pk=request.POST.get('status'))
+        print(statu)
+        application.status = statu
         application.save()
         return redirect('main:home')
     content = {
-        'application': application
+        'application': application,
+        'status': status,
     }
     return render(request, 'main/update.html', content)
 
+
+def status_view(request, pk):
+    status = Status.objects.get(pk=pk)
+    applications = Application.objects.filter(status=status)
+    faculties = Faculties.objects.all()
+    content = {
+        'faculties': faculties,
+        'applications': applications,
+        'status': status
+    }
+    return render(request, 'main/list.html', content)
+
+
+# def qabul_view(request):
+#     applications = Application.objects.filter(is_qabul=True)
+#     content = {
+#         'faculties': faculties,
+#         'applications': applications,
+#         'qabuls': qabuls,
+#         'radetilgan': radetilgan,
+#         'hammasi': hammasi,
+#         'notsees': notsees
+#     }
+#     return render(request, 'main/list.html', content)

@@ -12,6 +12,8 @@
     <script src="{% static 'scripts/jquery.js' %}"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <link rel="icon" href="{% static 'images/logotip.png' %}">
+
     <title>Talabalar turar joyi</title>
 
 </head>
@@ -30,18 +32,18 @@
                 ro'yhatga olish
             </p>
         </a>
-        <span>
-            <a href="/admin">
-                <p class="title">
-            <em style="color:tomato" class="fa fa-sign-out">
-            </em>
-            Kirish
-        </p>
-        </a>|
-            <a href="/">
-            <img src="{% static 'images/user.png' %}" alt="/">
-            </a>
-        </span>
+{#        <span>#}
+{#            <a href="/admin">#}
+{#                <p class="title">#}
+{#            <em style="color:tomato" class="fa fa-sign-out">#}
+{#            </em>#}
+{#            Kirish#}
+{#        </p>#}
+{#        </a>|#}
+{#            <a href="/">#}
+{#            <img src="{% static 'images/user.png' %}" alt="/">#}
+{#            </a>#}
+{#        </span>#}
     </header>
     <div class="main">
         <div class="content">
@@ -57,7 +59,7 @@
                     <br>
                     <li class="data-sort-sotrudnik">
                         <label for="radio01">
-                            <a href="/">
+                            <a href="{% url 'main:status' 2 %}">
                                 TTJga qabul qilinganlar
                             </a>
                         </label>
@@ -65,7 +67,7 @@
                     <br/>
                     <li class="data-sort-today">
                         <label for="radio1">
-                            <a href="/">
+                            <a href="{% url 'main:status' 3 %}">
                                 Qabul qilinmaganlar
                             </a>
                         </label>
@@ -80,17 +82,17 @@
                     </li>
                     <li><i class="fa fa-file-word-o"></i>
                         <p>Qabul qilinganlar</p>
-                        <p>{{ qabuls }}</p>
+                        <p>{{ qabul }}</p>
                     </li>
                     <li>
                         <i class="fa fa-file-word-o"></i>
                         <p>Rad etilganlar</p>
-                        <p>{{ radetilgan }}</p>
+                        <p>{{ radetildi }}</p>
                     </li>
                     <li>
                         <i class="fa fa-file-word-o"></i>
                         <p>Ko'rilmaganlar</p>
-                        <p>{{ notsees }}</p>
+                        <p>{{ korilmaganlar }}</p>
                     </li>
 
                     <br>
@@ -135,7 +137,7 @@
                                 <th><i class="fa fa-spin fa-gear"></i></th>
                             </tr>
                             {% for application in applications %}
-                                <tr style="padding: 0; background: {% if application.is_qabul %} #a4e898; {% elif application.is_radetildi %} #e5939a;{% endif %} border-bottom: 1px solid black;">
+                                <tr style="padding: 0; background: {% if application.status.id == 2 %} #a4e898; {% elif application.status.id == 3 %} #e5939a;{% endif %} border-bottom: 1px solid black;">
                                     <td class="td-id">
                                         <a href="{% url 'main:update' application.id %}">
                                             {{ application.id }}

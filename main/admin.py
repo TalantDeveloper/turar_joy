@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Faculties, Application
+from .models import Faculties, Application, Status
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -8,6 +8,12 @@ class FacultiesAdmin(TranslationAdmin):
     list_display = ('id', 'name', 'link_name')
     list_display_links = ('id', 'name', 'link_name')
     search_fields = ('name', 'link_name')
+
+
+@admin.register(Status)
+class StatusAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    list_display_links = ('id', 'name')
 
 
 @admin.register(Application)

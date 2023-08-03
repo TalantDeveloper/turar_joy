@@ -12,3 +12,4 @@ def login_view(request):
             login(request, user)
             return redirect('main:home')
     return render(request, 'account/login.html')
+

@@ -30,32 +30,43 @@
                 <button type="button" class="btn btn-success">
                     <a href="#" style="color: white;" class="nav-link h4">
                         Ariza
+
                         <img src="{% static 'images/document.png' %}" width="60" alt="">
+
                     </a>
                 </button>
             </div>
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-primary">
-                    <a href="{% if application.i_va_ii %}{{ application.i_va_ii.url }} {% endif %}" style="color: white;" class="nav-link h4">
+                    <a href="{% if application.i_va_ii %}{{ application.i_va_ii.url }} {% endif %}"
+                       style="color: white;" class="nav-link h4">
                         Nogironligi
+                        {% if application.i_va_ii %}
                         <img src="{% static 'images/down2.png' %}" width="60" alt="">
+                        {% endif %}
                     </a>
                 </button>
             </div>
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-warning">
-                    <a href="{% if application.yetim %}{{ application.yetim.url }}{% endif %}" style="color: white;" class="nav-link h4">
+                    <a href="{% if application.yetim %}{{ application.yetim.url }}{% endif %}" style="color: white;"
+                       class="nav-link h4">
                         Chin yetim
+                        {% if application.yetim %}
                         <img src="{% static 'images/down3.png' %}" width="60" alt="">
+                        {% endif %}
                     </a>
 
                 </button>
             </div>
             <div class="col-md-3 center-page">
                 <button type="button" class="btn btn-dark">
-                    <a href="{% if application.temir_daftar %}{{ application.temir_daftar.url }}{% endif %}" style="color: white;" class="nav-link h4">
+                    <a href="{% if application.temir_daftar %}{{ application.temir_daftar.url }}{% endif %}"
+                       style="color: white;" class="nav-link h4">
                         Temir va ayollar daftari
-                        <img src="{% static 'images/down3.png' %}" width="60" alt="">
+                        {% if application.temir_daftar %}
+                            <img src="{% static 'images/down3.png' %}" width="60" alt="">
+                        {% endif %}
                     </a>
                 </button>
             </div>
@@ -66,29 +77,31 @@
             <h2 class="p-2" style="text-align: justify;">
 
             </h2>
-            <div class="mb-3">
-                <div class="col-md-6">
-                    <label for="gender" class="form-label">Talabani:</label>
-                    <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="qabul" id="inlineRadio1"
-                               value="qabul" {% if application.is_qabul %} checked="checked" {% endif %} required>
-                        <label class="form-check-label" for="inlineRadio1">Qabul qilish</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="qabul" id="inlineRadio2"
-                               value="radetish" {% if application.is_radetildi %} checked="checked" {% endif %} required>
-                        <label class="form-check-label" for="inlineRadio2">Rad etish</label>
-                    </div>
-                </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Arizani:</label>
+                <select class="form-select" id="inputGroupSelect01" name="status" required>
+                    {% if application.status %}
+                        <option value="{{ statu.id }}" selected>{{ application.status }}</option>
+                    {% else %}
+                        <option selected>Tanlash...</option>
+
+                    {% endif %}
+                    {% for statu in status %}
+                        <option value="{{ statu.id }}">{{ statu.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="mb-3">
                 <label for="comment" class="form-label">Comment qoldiring</label>
-                <textarea name="comment" id="comment" cols="100" rows="5" class="form-control"></textarea>
-                <div id="emailHelp" class="form-text">Qabul qilgan yoki rad etganingizni sababi yoki tafsilotini kiriting.</div>
+                <textarea name="comment" id="comment" cols="100" rows="5"
+                          class="form-control">{{ application.commit }}</textarea>
+                <div id="emailHelp" class="form-text">Qabul qilgan yoki rad etganingizni sababi yoki tafsilotini
+                    kiriting.
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Yuborish</button>
+            <button type="submit" class="btn btn-primary" style="justify-items: center;">Yuborish</button>
         </form>
-        <h3></h3>
+        <h3 style="padding: 30px;"></h3>
     </div>
 {% endblock %}

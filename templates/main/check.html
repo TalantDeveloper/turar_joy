@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <div class="container-sm" style="width: 80%; margin-top: 20px;">
+    <div class="container-sm" style="width: 80%;">
         {% if application %}
             <div class="form-control">
                 <ul class="nav nav-pills nav-fill">
@@ -14,7 +14,7 @@
                         <a class="nav-link" href="{% url 'main:check' %}">Arizani tekshirish</a>
                     </li>
                 </ul>
-                {% if application.is_qabul %}
+                {% if application.status.id == 2 %}
                     <div class="alert alert-success container-sm" role="alert">
                         <h4 class="alert-heading">
                             {{ application.full_name }} sizning arizangiz: Qabul qilindi.
@@ -28,7 +28,7 @@
                             nomeri bilan bog'lanishingiz mumkin!
                         </p>
                     </div>
-                {% elif application.is_radetildi %}
+                {% elif application.status.id == 3 %}
                     <div class="alert alert-danger container-sm" role="alert">
                         <h4 class="alert-heading">
                             {{ application.full_name }} sizning arizangiz: Rad etildi.
@@ -82,6 +82,5 @@
                 <button type="submit" class="btn btn-primary container">Tekshirish</button>
             </form>
         {% endif %}
-        <h3></h3>
     </div>
 {% endblock %}
