@@ -79,6 +79,7 @@ def update_view(request, pk):
     return render(request, 'main/update.html', content)
 
 
+@login_required(login_url='account:login')
 def status_view(request, pk):
     status = Status.objects.get(pk=pk)
     applications = Application.objects.filter(status=status)
@@ -86,19 +87,30 @@ def status_view(request, pk):
     content = {
         'faculties': faculties,
         'applications': applications,
-        'status': status
+        'hammasi': len(Application.objects.all()),
+        'qabul': len(Application.objects.filter(status_id=2)),
+        'radetildi': len(Application.objects.filter(status_id=3)),
+        'korilmaganlar': len(Application.objects.filter(status_id=1)),
+        'status': status,
     }
     return render(request, 'main/list.html', content)
 
 
-# def qabul_view(request):
-#     applications = Application.objects.filter(is_qabul=True)
-#     content = {
-#         'faculties': faculties,
-#         'applications': applications,
-#         'qabuls': qabuls,
-#         'radetilgan': radetilgan,
-#         'hammasi': hammasi,
-#         'notsees': notsees
-#     }
-#     return render(request, 'main/list.html', content)
+@login_required(login_url='account:login')
+def print_view(request, pk):
+    if pk == 1:
+        applications = Application.objects.all()
+    else:
+        applications = Application.objects.filter(pk=pk)
+    content = {
+        'applications': applications,
+        'status': pk,
+    }
+    return render(request, 'main/print.html', content)
+
+
+
+
+
+
+

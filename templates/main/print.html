@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+    <style>
+        html,
+        body,
+        .intro {
+            height: 100%;
+        }
+
+        .gradient-custom-2 {
+            /* fallback for old browsers */
+            background: #fff;
+
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to top, rgba(244, 244, 244, 1), rgba(222, 222, 222, 1));
+
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to top, rgba(244, 244, 244, 1), rgba(222, 222, 222, 1))
+        }
+
+        table td,
+        table th {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        thead th,
+        tbody th {
+            color: #111;
+        }
+
+        h2 {
+            background: white;
+            text-align: center;
+        }
+
+        tbody td {
+            font-weight: 500;
+            color: rgba(1, 1, 1, 1);
+        }
+    </style>
+
+    <section class="intro">
+        <div class="gradient-custom-2 h-100">
+            <div class="mask d-flex align-items-center h-100">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <p>
+                                <input class="print" type="button" value="Pechat Qilish" id="btPrint"
+                                       onclick="createPDF()"/>
+                                <br><br>
+                            </p>
+                            <div class="table-responsive" id="tab">
+                                <table class="table table-light table-bordered mb-0">
+                                    <h2>Toshketn Davlat Stomatologiya Instituti talabalari Talabalar turar joyiga
+                                        {% if status == 1 %}
+                                            <b>Ariza topshirgan</b>
+                                        {% elif status == 2 %}
+                                            <b>Arizasi qabul qilingan</b>
+                                        {% elif status == 3 %}
+                                            <b>Arizasi rad etilgan</b>
+                                        {% endif %}
+                                        talabalar ro'yhati
+                                    </h2>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">F.I.Sh.</th>
+                                        <th scope="col">Tug'ilgan sana</th>
+                                        <th scope="col">Jinsi</th>
+                                        <th scope="col">Fakultet</th>
+                                        <th scope="col">Kurs</th>
+                                        <th scope="col">Ariza vaqti</th>
+                                        <th scope="col">Ariza holati</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for application in applications %}
+                                        <tr>
+                                            <th scope="row">{{ application.id }}</th>
+                                            <th scope="row">{{ application.full_name }}</th>
+                                            <th scope="row">{{ application.birthday|date:"d.m.Y" }}</th>
+                                            <th scope="row">{{ application.gender }}</th>
+                                            <th scope="row">{{ application.faculty.name_uz }}</th>
+                                            <th scope="row">{{ application.course }}</th>
+                                            <th scope="row">{{ application.create_at|time:"H:i" }}
+                                                | {{ application.create_at|date:"d.m.Y" }}</th>
+                                            <th scope="row">{{ application.status }}</th>
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function createPDF() {
+            var sTable = document.getElementById('tab').innerHTML;
+
+            var style = "<style>";
+            style = style + "table {width: 100%;font: 14px Calibri;}";
+            style = style + "table, th, td {border: solid 1px #AAA; border-collapse: collapse;";
+            style = style + "padding: 2px 3px;text-align: center;}";
+            style = style + "</style>";
+
+            // CREATE A WINDOW OBJECT.
+            var win = window.open('', '', 'height=700,width=700');
+
+            win.document.write('<html><head>');
+            win.document.write('<title>File</title>');   // <title> FOR PDF HEADER.
+            win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
+            win.document.write('</head>');
+            win.document.write('<body>');
+            win.document.write(sTable);         // THE TABLE CONTENTS INSIDE THE BODY TAG.
+            win.document.write('</body></html>');
+            win.document.close(); 	// CLOSE THE CURRENT WINDOW.
+
+            win.print();    // PRINT THE CONTENTS.
+        }
+    </script>
+
+{% endblock %}
+

@@ -18,17 +18,15 @@
 <body>
 <div class="container mini-admin">
     <header id="header">
-        <a href="/" style="color:#FFF;">
+        <a href="{% url 'main:home' %}" style="color:#FFF;">
             <nav><img src="{% static 'images/logo-wide.png' %}" alt="alt"/>
                 <p>TTJ Admin</p></nav>
         </a>
-        <a href="/">
-            <p class="title">
-                <i class="fa fa-envelope"></i>
-                Toshkent Davlat Stomatologiya Institutida tahsil olayotgan talabalarni talabalar turar joyiga online
-                ro'yhatga olish
-            </p>
-        </a>
+        <p class="title">
+            <i class="fa fa-envelope"></i>
+            Toshkent Davlat Stomatologiya Institutida tahsil olayotgan talabalarni talabalar turar joyiga online
+            ro'yhatga olish
+        </p>
     </header>
     <div class="main">
         <div class="content">
@@ -80,24 +78,46 @@
                         <p>{{ korilmaganlar }}</p>
                     </li>
 
-                    <br>
-                    <hr style="border:none;border-bottom: 1px dashed #ccc;">
-                    <br>
 
-                    <li class="">
-                        <a href="/">
-                            <p class="clprint">Pechat qilish
+                </ul>
+                <hr>
+                <h3 style="text-align: center;">Pechat qilish</h3>
+                <hr>
+                <ul class="data-sort">
+                    <li class="data-sort-otdel clprint">
+                        <label for="radio02">
+                            <a href="{% url 'main:print' 1 %}">
+                                Ro'yhatdan o'tganlar
                                 <i class="fa fa-print"></i>
-                            </p>
-                        </a>
+                            </a>
+                        </label>
+                    </li>
+                    <br>
+                    <li class="data-sort-sotrudnik clprint">
+                        <label for="radio01">
+                            <a href="{% url 'main:print' 2 %}">
+                                TTJga qabul qilinganlar
+                                <i class="fa fa-print"></i>
+                            </a>
+                        </label>
+                    </li>
+                    <br/>
+                    <li class="data-sort-today clprint">
+                        <label for="radio1">
+                            <a href="{% url 'main:print' 3 %}">
+                                Qabul qilinmaganlar
+                                <i class="fa fa-print"></i>
+                            </a>
+                        </label>
                     </li>
                 </ul>
+
             </div>
             <div class="main-bar">
                 <div class="welcome">
                     <p>
                         <a class="add-order-btn" href="/">
-                            Qo'shish
+                            Ariza qo'shish
                         </a>
                     </p>
                     <div class="table">
@@ -115,7 +135,7 @@
                                 <th><i class="fa fa-spin fa-gear"></i></th>
                             </tr>
                             {% for application in applications %}
-                                <tr style="padding: 0; background: {% if application.status.id == 2 %} #a4e898; {% elif application.status.id == 3 %} #e5939a;{% endif %} border-bottom: 1px solid black;">
+                                <tr style="padding: 0; background: {% if application.status.id == 2 %} #c2f8b5; {% elif application.status.id == 3 %} #e5939a;{% endif %} border-bottom: 1px solid #f1e4e4;">
                                     <td class="td-id">
                                         <a href="{% url 'main:update' application.id %}">
                                             {{ application.id }}
@@ -143,53 +163,53 @@
                                     </td>
 
                                     <td class="td-doc_date">
-                                        {{ application.faculty }}
+                                        {{ application.faculty.name_uz }}
                                     </td>
                                     <td class="td-tipconcart">
                                         {{ application.course }}
                                     </td>
                                     <td class="td-tipconcart">
-                                        {{ application.status }}
+                                        <b>{{ application.status }}</b>
                                     </td>
-{#                                    {% if application.i_va_ii %}#}
-{#                                        <td class="td-tip_doc">#}
-{#                                            <a href="{{ application.i_va_ii.url }}" target="_blank">#}
-{#                                                <img src="{% static 'images/down1.png' %}" width="40" alt="">#}
-{#                                            </a>#}
-{#                                        </td>#}
-{#                                    {% else %}#}
-{#                                        <td class="td-tip_doc">#}
-{#                                            <a href="#" target="_blank">#}
-{##}
-{#                                            </a>#}
-{#                                        </td>#}
-{#                                    {% endif %}#}
-{#                                    {% if application.temir_daftar %}#}
-{#                                        <td class="td-tip_doc">#}
-{#                                            <a href="{{ application.temir_daftar.url }}" target="_blank">#}
-{#                                                <img src="{% static 'images/down2.png' %}" width="40" alt="">#}
-{#                                            </a>#}
-{#                                        </td>#}
-{#                                    {% else %}#}
-{#                                        <td class="td-tip_doc">#}
-{#                                            <a href="#" target="_blank">#}
-{##}
-{#                                            </a>#}
-{#                                        </td>#}
-{#                                    {% endif %}#}
-{#                                    {% if application.yetim %}#}
-{#                                        <td class="td-tip_doc">#}
-{#                                            <a href="{{ application.yetim.url }}" target="_blank">#}
-{#                                                <img src="{% static 'images/down3.png' %}" width="40" alt="">#}
-{#                                            </a>#}
-{#                                        </td>#}
-{#                                    {% else %}#}
-{#                                        <td class="td-tip_doc">#}
-{#                                            <a href="#" target="_blank">#}
-{##}
-{#                                            </a>#}
-{#                                        </td>#}
-{#                                    {% endif %}#}
+                                    {#                                    {% if application.i_va_ii %}#}
+                                    {#                                        <td class="td-tip_doc">#}
+                                    {#                                            <a href="{{ application.i_va_ii.url }}" target="_blank">#}
+                                    {#                                                <img src="{% static 'images/down1.png' %}" width="40" alt="">#}
+                                    {#                                            </a>#}
+                                    {#                                        </td>#}
+                                    {#                                    {% else %}#}
+                                    {#                                        <td class="td-tip_doc">#}
+                                    {#                                            <a href="#" target="_blank">#}
+                                    {##}
+                                    {#                                            </a>#}
+                                    {#                                        </td>#}
+                                    {#                                    {% endif %}#}
+                                    {#                                    {% if application.temir_daftar %}#}
+                                    {#                                        <td class="td-tip_doc">#}
+                                    {#                                            <a href="{{ application.temir_daftar.url }}" target="_blank">#}
+                                    {#                                                <img src="{% static 'images/down2.png' %}" width="40" alt="">#}
+                                    {#                                            </a>#}
+                                    {#                                        </td>#}
+                                    {#                                    {% else %}#}
+                                    {#                                        <td class="td-tip_doc">#}
+                                    {#                                            <a href="#" target="_blank">#}
+                                    {##}
+                                    {#                                            </a>#}
+                                    {#                                        </td>#}
+                                    {#                                    {% endif %}#}
+                                    {#                                    {% if application.yetim %}#}
+                                    {#                                        <td class="td-tip_doc">#}
+                                    {#                                            <a href="{{ application.yetim.url }}" target="_blank">#}
+                                    {#                                                <img src="{% static 'images/down3.png' %}" width="40" alt="">#}
+                                    {#                                            </a>#}
+                                    {#                                        </td>#}
+                                    {#                                    {% else %}#}
+                                    {#                                        <td class="td-tip_doc">#}
+                                    {#                                            <a href="#" target="_blank">#}
+                                    {##}
+                                    {#                                            </a>#}
+                                    {#                                        </td>#}
+                                    {#                                    {% endif %}#}
                                     <td class="">
                                         <a href="{% url 'main:update' application.id %}">
                                             <i class="order-editor fa fa-edit"

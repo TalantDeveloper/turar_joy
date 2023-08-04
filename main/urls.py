@@ -10,4 +10,5 @@ urlpatterns = [
     path('home/', views.home_view, name='home'),
     path('home/<int:pk>/', views.status_view, name='status'),
     path('update/<int:pk>/', views.update_view, name='update'),
+    path('print/<int:pk>/', views.print_view, name='print')
 ]
