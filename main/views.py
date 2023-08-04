@@ -108,9 +108,3 @@ def print_view(request, pk):
     }
     return render(request, 'main/print.html', content)
 
-
-
-
-
-
-
