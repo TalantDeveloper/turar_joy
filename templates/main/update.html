@@ -32,7 +32,7 @@
         <div class="row g-0" style="padding-bottom: 10px;">
             <h5><b>Chin yetim </b>
                 {% if application.yetim %}
-                    <a href="{{ application.yetim.url }}" target="_blank">
+                    <a href="{{ application.yetim.url }}" target="_blank" download>
                         <img src="{% static 'images/123.png' %}" width="30" alt="">
                     </a>
                 {% endif %}
@@ -40,7 +40,7 @@
             <hr>
             <h5><b>I va II-guruh nogironlik </b>
                 {% if application.i_va_ii %}
-                    <a href="{{ application.i_va_ii.url }}" target="_blank">
+                    <a href="{{ application.i_va_ii.url }}" target="_blank" download>
                         <img src="{% static 'images/123.png' %}" width="30" alt="">
                     </a>
                 {% endif %}
@@ -48,7 +48,7 @@
             <hr>
             <h5><b>'Temir daftar' va 'Ayollar daftari'da turadigan oila farzandi </b>
                 {% if application.temir_daftar %}
-                    <a href="{{ application.temir_daftar.url }}" target="_blank">
+                    <a href="{{ application.temir_daftar.url }}" target="_blank" download>
                         <img src="{% static 'images/123.png' %}" width="30" alt="">
                     </a>
                 {% endif %}
@@ -56,7 +56,7 @@
             <hr>
             <h5><b>'Yoshlar daftari'da turadigan talaba </b>
                 {% if application.yoshlar_daftar %}
-                    <a href="{{ application.yoshlar_daftar.url }}" target="_blank">
+                    <a href="{{ application.yoshlar_daftar.url }}" target="_blank" download>
                         <img src="{% static 'images/123.png' %}" width="30" alt="">
                     </a>
                 {% endif %}
@@ -64,7 +64,7 @@
             <hr>
             <h5><b> Oilasida I va II guruh nogironligi yoki surunkali kasalligi bo'lgan oila farzandi </b>
                 {% if application.oila_i_va_ii %}
-                    <a href="{{ application.oila_i_va_ii.url }}" target="_blank">
+                    <a href="{{ application.oila_i_va_ii.url }}" target="_blank" download>
                         <img src="{% static 'images/123.png' %}" width="30" alt="">
                     </a>
                 {% endif %}
@@ -72,7 +72,7 @@
             <hr>
             <h5><b> Boshqa imtiyozlar </b>
                 {% if application.boshqa %}
-                    <a href="{{ application.boshqa.url }}" target="_blank">
+                    <a href="{{ application.boshqa.url }}" target="_blank" download>
                         <img src="{% static 'images/123.png' %}" width="30" alt="">
                     </a>
                 {% endif %}
