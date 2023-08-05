@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('main.urls')),
 ]
 
+handler404 = 'main.views.handling_404'
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

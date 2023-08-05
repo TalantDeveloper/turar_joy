@@ -108,3 +108,6 @@ def print_view(request, pk):
     }
     return render(request, 'main/print.html', content)
 
+
+def handling_404(request, exception):
+    return render(request, 'handler404.html', {})
