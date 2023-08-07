@@ -23,10 +23,10 @@
                             {{ application.commit }}
                         </p>
                         <hr>
-{#                        <p class="mb-0">#}
-{#                            Arizangiz natijasi bo'yicha <a href="tel:+998-91-234-44-90" style="text-decoration: none;">+998-91-234-44-90</a>#}
-{#                            nomeri bilan bog'lanishingiz mumkin!#}
-{#                        </p>#}
+                        {#                        <p class="mb-0">#}
+                        {#                            Arizangiz natijasi bo'yicha <a href="tel:+998-91-234-44-90" style="text-decoration: none;">+998-91-234-44-90</a>#}
+                        {#                            nomeri bilan bog'lanishingiz mumkin!#}
+                        {#                        </p>#}
                     </div>
                 {% elif application.status.id == 3 %}
                     <div class="alert alert-danger container-sm" role="alert">
@@ -37,10 +37,10 @@
                             {{ application.commit }}
                         </p>
                         <hr>
-{#                        <p class="mb-0">#}
-{#                            Arizangiz natijasi bo'yicha <a href="tel:+998-91-234-44-90" style="text-decoration: none;">+998-91-234-44-90</a>#}
-{#                            nomeri bilan bog'lanishingiz mumkin!#}
-{#                        </p>#}
+                        {#                        <p class="mb-0">#}
+                        {#                            Arizangiz natijasi bo'yicha <a href="tel:+998-91-234-44-90" style="text-decoration: none;">+998-91-234-44-90</a>#}
+                        {#                            nomeri bilan bog'lanishingiz mumkin!#}
+                        {#                        </p>#}
                     </div>
                 {% else %}
                     <div class="alert alert-warning container-sm" role="alert">
@@ -51,10 +51,10 @@
                             Tez orada Arizangiz ko'rib chiqiladi, Email manzilingizga habar yuboriladi.
                         </p>
                         <hr>
-{#                        <p class="mb-0">#}
-{#                            Arizangiz natijasi bo'yicha <a href="tel:+998-91-234-44-90" style="text-decoration: none;">+998-91-234-44-90</a>#}
-{#                            nomeri bilan bog'lanishingiz mumkin!#}
-{#                        </p>#}
+                        {#                        <p class="mb-0">#}
+                        {#                            Arizangiz natijasi bo'yicha <a href="tel:+998-91-234-44-90" style="text-decoration: none;">+998-91-234-44-90</a>#}
+                        {#                            nomeri bilan bog'lanishingiz mumkin!#}
+                        {#                        </p>#}
                     </div>
                 {% endif %}
             </div>
@@ -71,8 +71,18 @@
                 <hr>
                 {% csrf_token %}
                 <div class="mb-3">
+                    {% if message %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endif %}
+
                     <label for="id" class="form-label h2" style="padding: 10px;">Ro'yhatga olingan tartib raqamingizni
                         kiriting:</label>
+
                     <input type="number" name="id" class="form-control" id="id" aria-describedby="idhelp"
                            placeholder="example: 123.." style="padding: 10px; margin: 10px;" required>
                     <div id="idhelp" class="form-text" style="padding: 5px 5px 5px 10px;">

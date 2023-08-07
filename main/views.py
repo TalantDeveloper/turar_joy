@@ -40,7 +40,10 @@ def success_view(request):
 def check_id(request):
     if request.method == 'POST':
         application_id = request.POST.get('id')
-        application = Application.objects.get(id=application_id)
+        try:
+            application = Application.objects.get(id=application_id)
+        except:
+            return render(request, 'main/check.html', {'message': "Bunday ariza ro'yhatdan o'tmagan."})
         return render(request, 'main/check.html', {'application': application})
     else:
         return render(request, 'main/check.html')
@@ -92,6 +95,23 @@ def status_view(request, pk):
         'radetildi': len(Application.objects.filter(status_id=3)),
         'korilmaganlar': len(Application.objects.filter(status_id=1)),
         'status': status,
+    }
+    return render(request, 'main/list.html', content)
+
+
+@login_required(login_url='account:login')
+def fakulty_view(request, pk):
+    faculty = Faculties.objects.get(pk=pk)
+    applications = Application.objects.filter(faculty=faculty)
+    faculties = Faculties.objects.all()
+    content = {
+        'faculties': faculties,
+        'applications': applications,
+        'hammasi': len(Application.objects.all()),
+        'qabul': len(Application.objects.filter(status_id=2)),
+        'radetildi': len(Application.objects.filter(status_id=3)),
+        'korilmaganlar': len(Application.objects.filter(status_id=1)),
+        'fakulty': faculty,
     }
     return render(request, 'main/list.html', content)
 
