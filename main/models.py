@@ -29,6 +29,7 @@ class Application(models.Model):
     create_at = models.DateTimeField(auto_now_add=True, verbose_name='Ariza vaqti')
 
     # ijtimoiy holati
+    pasport = models.FileField(upload_to='./pasport/', verbose_name='Passport nusxasi', null=True, blank=True)
     i_va_ii = models.FileField(upload_to='./i_va_ii/', verbose_name='I va II guruh nogiron', null=True, blank=True)
     temir_daftar = models.FileField(upload_to='./temir_daftar/', verbose_name='Temir daftar', null=True, blank=True)
     yetim = models.FileField(upload_to='./yetim/', verbose_name='Yetim', null=True, blank=True)

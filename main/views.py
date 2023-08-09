@@ -16,6 +16,7 @@ def welcome_view(request):
                                                  faculty=faculty,
                                                  course=request.POST.get('kurs'),
                                                  image=request.FILES.get('image'),
+                                                 pasport=request.FILES.get('pasport'),
                                                  i_va_ii=request.FILES.get('nogiron'),
                                                  temir_daftar=request.FILES.get('temir'),
                                                  yetim=request.FILES.get('yetim'),

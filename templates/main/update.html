@@ -30,6 +30,15 @@
             </div>
         </div>
         <div class="row g-0" style="padding-bottom: 10px;">
+
+            <h5><b>Pasport nusxasi:</b>
+                {% if application.pasport %}
+                    <a href="{{ application.pasport.url }}" target="_blank" download>
+                        <img src="{% static 'images/123.png' %}" width="30" alt="">
+                    </a>
+                {% endif %}
+            </h5>
+            <hr>
             <h5><b>Chin yetim </b>
                 {% if application.yetim %}
                     <a href="{{ application.yetim.url }}" target="_blank" download>
