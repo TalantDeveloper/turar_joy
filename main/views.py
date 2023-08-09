@@ -72,8 +72,10 @@ def update_view(request, pk):
     status = Status.objects.all()
     if request.method == 'POST':
         statu = Status.objects.get(pk=request.POST.get('status'))
+        commit = request.POST.get('comment')
         print(statu)
         application.status = statu
+        application.commit = commit
         application.save()
         return redirect('main:home')
     content = {
