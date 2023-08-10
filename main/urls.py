@@ -11,5 +11,6 @@ urlpatterns = [
     path('home/<int:pk>/', views.status_view, name='status'),
     path('home/fakulty/<int:pk>/', views.fakulty_view, name='fakulty'),
     path('update/<int:pk>/', views.update_view, name='update'),
-    path('print/<int:pk>/', views.print_view, name='print')
+    path('print/<int:pk>/', views.print_view, name='print'),
+    path('list/', views.lists_view, name='lists'),
 ]

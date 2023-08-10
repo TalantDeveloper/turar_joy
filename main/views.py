@@ -131,6 +131,9 @@ def print_view(request, pk):
     }
     return render(request, 'main/print.html', content)
 
+def lists_view(request):
+    return render(request, 'main/home.html')
+
 
 def handling_404(request, exception):
     return render(request, 'handler404.html', {})
