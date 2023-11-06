@@ -19,11 +19,13 @@ from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 from django.conf import settings
 from django.conf.urls.static import static
+from main.views import none_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', include('account.urls')),
     path('', include('main.urls')),
+    path('<str:name>/', none_page),
 ]
 
 handler404 = 'main.views.handling_404'
